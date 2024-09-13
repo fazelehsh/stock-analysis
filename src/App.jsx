@@ -20,6 +20,7 @@ function App() {
       try {
         const response = await fetch(API_URL);
         const data = await response.json();
+
         const dataListed = Object.entries(data["Monthly Adjusted Time Series"]);
         const filteredData = filterDataByYear(dataListed, 2018, 2023);
         setStockData(filteredData);
@@ -79,7 +80,7 @@ function App() {
   return <Table data={returnsData} />;
 };
 
-const Table = (data) => {
+const Table = (props) => {
 
   const columns = useMemo(
     () => [
@@ -140,7 +141,7 @@ const Table = (data) => {
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data:data.data });
+    useTable({ columns, data:props.data });
 
   return (
     <div className="App">
