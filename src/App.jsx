@@ -55,8 +55,8 @@ function App() {
         returns.push({ year: year });
       }
 
-      if(i+1 >= data.length){
-        returns.find((item) => item.year === year)[month] = "";
+      if (i + 1 >= data.length) {
+        returns.find((item) => item.year === year)[month] = 0;
         break;
       }
 
@@ -67,6 +67,50 @@ function App() {
 
       returns.find((item) => item.year === year)[month] = returnPercent.toFixed(2);
     }
+
+    const av = { year: "average" };
+    returns.forEach((item) => {
+      for (const i in item) {
+        if (i !== "year") {
+          if (typeof av[i] === "undefined") {
+            av[i] = Number(item[i]);
+          }
+          else {
+            av[i] = Number(av[i]) + Number(item[i])
+          }
+        }
+      }
+    })
+    for (const m in av) {
+      if (m !== "year") {
+        av[m] = (av[m] / returns.length).toFixed(2)
+      }
+
+    }
+
+
+
+    const sd = { year: "standard deviation" };
+    returns.forEach((item) => {
+      for (const i in item) {
+        if (i !== "year") {
+          if (typeof sd[i] === "undefined") {
+            sd[i] = Math.pow(Number(item[i]) - (av[i]), 2);
+          }
+          else {
+            sd[i] = Number(sd[i]) + Math.pow(Number(item[i]) - (av[i]), 2);
+          }
+        }
+      }
+    })
+    for (const m in sd) {
+      if (m !== "year") {
+        sd[m] = Math.sqrt(sd[m] / (returns.length - 1)).toFixed(2)
+      }
+    }
+
+    returns.push(av);
+    returns.push(sd);
     return returns;
   };
 
@@ -141,7 +185,7 @@ const Table = (props) => {
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data:props.data });
+    useTable({ columns, data: props.data });
 
   return (
     <div className="App">
