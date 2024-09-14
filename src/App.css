@@ -1,3 +1,5 @@
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +41,55 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.cell-green-5 {
+  background: var(--Color-Green-Green500, #33A159);
+  color:black;
+}
+
+.cell-green-4 {
+  background: var(--Color-Green-Green400, #66B882);
+
+}
+
+.cell-green-3 {
+  background: var(--Color-Green-Green300, #99D0AC);
+
+}
+
+.cell-green-2 {
+  background: var(--Color-Green-Green200, #CCE7D5);
+
+}
+
+.cell-green-1 {
+  background: var(--Color-Green-Green100, #E5F3EA);
+
+}
+
+
+.cell-red-1 {
+  background: var(--Color-Red-Red100, #FDE8E8);
+
+}
+
+.cell-red-2 {
+  background: var(--Color-Red-Red200, #FAD1D1);
+
+}
+
+.cell-red-3 {
+  background: var(--Color-Red-Red300, #F6A4A4);
+
+}
+
+.cell-red-4 {
+  background: var(--Color-Red-Red500, #EF5F5F);
+
+}
+
+.cell-white {
+  background: white;
+
 }

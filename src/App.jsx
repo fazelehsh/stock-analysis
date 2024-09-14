@@ -56,7 +56,11 @@ function App() {
       }
 
       if (i + 1 >= data.length) {
-        returns.find((item) => item.year === year)[month] = 0;
+        const currentMonth = data[i][1];
+  
+        const returnPercent = ((Number(currentMonth["5. adjusted close"]) - Number(currentMonth["1. open"])) / Number(currentMonth["5. adjusted close"])) * 100;
+  
+        returns.find((item) => item.year === year)[month] = returnPercent.toFixed(2);
         break;
       }
 
@@ -190,9 +194,9 @@ const Table = (props) => {
   return (
     <div className="App">
       <div className="container">
-        <table {...getTableProps()}>
+        <table {...getTableProps()}  className="w-full text-gray-700">
 
-          <thead>
+          <thead >
 
             {headerGroups.map((headerGroup) =>
             (
@@ -220,8 +224,8 @@ const Table = (props) => {
                 return (
                   <tr {...row.getRowProps()}>
                     {row.cells.map((cell) => (
-                      <td {...cell.getCellProps()}> {cell.render("Cell")} </td>
-                    ))}
+                      <td {...cell.getCellProps()} className={getCellColorClass(cell.value,cell) + " padding-cell"}> {cell.render("Cell")}{cell.column.Header !== "Year" ? "%" : ""} </td>
+                   ))}
                   </tr>
                 );
               })
@@ -236,4 +240,17 @@ const Table = (props) => {
 
 }
 
+
+const getCellColorClass = (value,cell) =>{
+  if(cell.column.Header === "Year" ){
+    return "cell-white";
+  }
+  if (value>0)  {
+    return "cell-green-1";
+  }
+  if(value <= 0){
+    return "cell-red-1";
+  }
+  return "cell-white";
+}
 export default App;
