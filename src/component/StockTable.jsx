@@ -8,7 +8,7 @@ import { useTable } from "react-table";
 
 function StockTable(props) {
   const stockSymbol = props.symbol;
-  const API_URL = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=${stockSymbol}&apikey=TBPPN699OUUSRAQF`;
+  const API_URL = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=${stockSymbol}&apikey=demo`;
 
   const [stockData, setStockData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,6 +26,7 @@ function StockTable(props) {
         const filteredData = filterDataByYear(dataListed, 2018, 2023);
         setStockData(filteredData);
       } catch (err) {
+        console.log(err)
         setError('Failed to fetch stock data');
       } finally {
         setLoading(false);
@@ -193,19 +194,19 @@ const Table = (props) => {
     useTable({ columns, data: props.data });
 
   return (
-    <div className="App">
+    <div className="App  relative overflow-x-auto">
       <div className="container">
-        <table {...getTableProps()}  className="w-full text-gray-700">
+        <table {...getTableProps()}  className="w-full  w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 
-          <thead >
+          <thead className="p-10 items-center">
 
             {headerGroups.map((headerGroup) =>
             (
-              <tr {...headerGroup.getHeaderGroupProps()}>
+              <tr {...headerGroup.getHeaderGroupProps()} className="p-10 items-center">
 
                 {headerGroup.headers.map((column) =>
                 (
-                  <th {...column.getHeaderProps()}>
+                  <th {...column.getHeaderProps()} className="p-10 items-center">
                     {column.render("Header")}
                   </th>
                 ))
@@ -217,7 +218,7 @@ const Table = (props) => {
 
           </thead>
 
-          <tbody {...getTableBodyProps()}>
+          <tbody {...getTableBodyProps()} className="p-10">
 
             {
               rows.map((row) => {
