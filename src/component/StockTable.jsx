@@ -246,12 +246,34 @@ const getCellColorClass = (value,cell) =>{
   if(cell.column.Header === "Year" ){
     return "cell-white";
   }
-  if (value>0)  {
+  if (value>0 && value<2)  {
     return "cell-green-1";
   }
-  if(value <= 0){
+  if(value>2 && value<4  ){
+    return "cell-green-2";
+  }
+  if(value>4 && value<6  ){
+    return "cell-green-3";
+  }
+  if(value>6 && value<8  ){
+    return "cell-green-4";
+  }
+  if(value>8 && value<100  ){
+    return "cell-green-5";
+  }
+  if(value<0 && value>-2  ){
     return "cell-red-1";
   }
+  if(value<-2 && value>-4  ){
+    return "cell-red-2";
+  }
+  if(value<-4 && value>-6  ){
+    return "cell-red-3";
+  }
+  if(value<-6 && value>-100  ){
+    return "cell-red-4";
+  }
+  
   return "cell-white";
 }
 export default StockTable;

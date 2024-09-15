@@ -45,7 +45,7 @@
 
 .cell-green-5 {
   background: var(--Color-Green-Green500, #33A159);
-  color:black;
+  
 }
 
 .cell-green-4 {
@@ -93,3 +93,5 @@
   background: white;
 
 }
+
+
