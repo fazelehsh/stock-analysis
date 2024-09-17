@@ -95,3 +95,44 @@
 }
 
 
+
+
+
+tbody:before {
+  content:"@";
+  display:block;
+  line-height:10px;
+  text-indent:-99999px;
+}
+
+.custom-table {
+  border-collapse: separate; 
+  border-spacing: 10px;     
+}
+
+tr:hover {
+  font-weight: bold;
+}
+
+
+.custom-table tbody tr.hovered  {
+  background-color:  rgba(0, 114, 240, 1)
+}
+
+
+.custom-table thead th.hovered,
+.custom-table tbody tr.hovered td.hovered {
+  background-color:  rgba(0, 114, 240, 1);
+
+
+
+}
+
+
+.year-hover {
+  background-color: rgba(0, 114, 240, 1);;
+ 
+  
+}
+
+
