@@ -262,10 +262,11 @@ const Table = (props) => {
             }
 
           </tbody>
+         
           
-          <>
+          
+          {/*
           <tfoot>
-          
           <tr>
               {columns.map((column, index) => {
                 const averageValue = props.data.find((item) => item.year === "average")?.[column.accessor];
@@ -287,7 +288,8 @@ const Table = (props) => {
             </tr>
           </tfoot>
 
-          </>
+      
+         */}
         </table>
       </div>
     </div>
