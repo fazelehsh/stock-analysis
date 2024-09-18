@@ -265,18 +265,18 @@ const Table = (props) => {
          
           
           
-          {/*
+          
           <tfoot>
           <tr>
-              {columns.map((column, index) => {
-                const averageValue = props.data.find((item) => item.year === "average")?.[column.accessor];
-                return (
-                  <td key={column.accessor} className={`${getCellColorClass(averageValue)} padding-cell`}>
-                    {averageValue || ""}
+              {columns.map((column) => {
+                  
+                
+                  return <td key={column.accessor} className=" padding-cell">
+                   { props.data.find((item) => item.year === "average")?.[column.accessor] || ""}
                     {column.Header !== "Year" ? "%" : ""}
                   </td>
-                );
-              })}
+                
+               })}
             </tr>
            
             <tr>
@@ -289,7 +289,7 @@ const Table = (props) => {
           </tfoot>
 
       
-         */}
+         
         </table>
       </div>
     </div>
