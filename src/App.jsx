@@ -1,7 +1,7 @@
 import "./App.css";
-import StockTable from './component/StockTable';
 import { useState } from 'react';
 
+import StockDetail from './component/StockDetail';
 
 function App() {
   const [symbol, setSymbol] = useState("MSFT");
@@ -20,7 +20,7 @@ function App() {
 									'group inline-flex items-center rounded-sm p-1.5 text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100'font-medium justify-around">
       IBM
     </button>
-    <StockTable key={symbol} symbol={symbol} />
+    <StockDetail key={`${symbol}-Table`} symbol={symbol} />
   </>;
 };
 
