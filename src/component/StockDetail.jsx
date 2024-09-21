@@ -132,7 +132,7 @@ function StockDetail(props) {
 
   return <>
     <StockTable stockData={returnsData} />
-    <StockChart stockData={returnsData} />
+    <StockChart stockData={returnsData[0]} />
   </>
 };
 
