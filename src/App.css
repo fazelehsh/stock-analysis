@@ -110,9 +110,6 @@ tbody:before {
   border-spacing: 10px;     
 }
 
-tr:hover {
-  font-weight: bold;
-}
 
 
 .custom-table tbody tr.hovered  {
@@ -122,7 +119,7 @@ tr:hover {
 
 .custom-table thead th.hovered,
 .custom-table tbody tr.hovered td.hovered {
-  background-color:  rgba(0, 114, 240, 1);
+  background-color:  rgba(0, 132, 240, 1);
 
 
 

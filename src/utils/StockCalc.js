@@ -12,7 +12,7 @@ const calculateStockDataForTable = (data) => {
     if (i + 1 >= data.length) {
       const currentMonth = data[i][1];
 
-      const returnPercent = ((Number(currentMonth["5. adjusted close"]) - Number(currentMonth["1. open"])) / Number(currentMonth["5. adjusted close"])) * 100;
+      const returnPercent = ((Number(currentMonth["5. adjusted close"]) - Number(currentMonth["1. open"])) / Number(currentMonth["1. open"])) * 100;
 
       returns.find((item) => item.year === year)[month] = returnPercent.toFixed(2);
       break;

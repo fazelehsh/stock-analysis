@@ -7,7 +7,7 @@ import { useTable } from "react-table";
 
 
 function StockTable(props) {
- 
+
   return <Table data={props.stockData} />;
 };
 
@@ -81,7 +81,7 @@ const Table = (props) => {
   return (
     <div className="App  relative overflow-x-auto">
       <div className="container">
-        <table {...getTableProps()}  className="custom-table w-full  w-full text-sm  items-center table-auto text-gray-500 dark:text-gray-400 ">
+        <table {...getTableProps()} className="custom-table w-full  w-full text-sm  items-center table-auto text-black  ">
 
           <thead className="p-3 items-center cell-margin ">
 
@@ -89,17 +89,12 @@ const Table = (props) => {
             (
               <tr {...headerGroup.getHeaderGroupProps()} className="p-3 items-center cell-margin ">
 
-                {headerGroup.headers.map((column , index) =>
-
-
-
-
+                {headerGroup.headers.map((column, index) =>
                 (
-                  <th {...column.getHeaderProps()} 
-                  className={`column-${index} ${
-                    hoveredColumnIndex === index ? 'hovered' : ''
-                  }`}
-                >
+                  <th {...column.getHeaderProps()}
+                    className={`column-${index} ${hoveredColumnIndex === index ? 'hovered' : ''
+                      }`}
+                  >
                     {column.render("Header")}
                   </th>
                 ))
@@ -113,16 +108,16 @@ const Table = (props) => {
 
           <tbody {...getTableBodyProps()} className="p-3 cell-margin ">
 
-          
-              {rows.map((row , rowIndex) => {
-                prepareRow(row);
-                
-                return (
-                  
-                  <tr {...row.getRowProps()}
+
+            {rows.map((row, rowIndex) => {
+              prepareRow(row);
+
+              return (
+
+                <tr {...row.getRowProps()}
                   className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''}`}  >
-                    {row.cells.map((cell , columnIndex) => (
-                      <td {...cell.getCellProps()} className={`${getCellColorClass(cell.value,cell)}  padding-cell ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover"  : ''}`}
+                  {row.cells.map((cell, columnIndex) => (
+                    <td {...cell.getCellProps()} className={`${getCellColorClass(cell.value, cell)}  padding-cell rounded-lg px-4 py-2  ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}`}
                       onMouseEnter={() => {
                         setHoveredRowIndex(rowIndex);
                         setHoveredColumnIndex(columnIndex);
@@ -130,34 +125,34 @@ const Table = (props) => {
                       onMouseLeave={() => {
                         setHoveredRowIndex(null);
                         setHoveredColumnIndex(null);
-                      }}> {cell.render("Cell")}
-                      {cell.column.Header !== "Year" ? "%" : ""} 
-                      </td>
-                   ))}
-                  </tr>
-                  
-                );
-              })
+                      }}> 
+                       {cell.column.Header !== "Year" ? `%${cell.value}` : cell.render("Cell")}
+                    </td>
+                  ))}
+                </tr>
+
+              );
+            })
             }
 
           </tbody>
-         
-          
-          
-          
+
+
+
+
           <tfoot>
-          <tr>
+            <tr>
               {columns.map((column) => {
-                  
-                
-                  return <td key={column.accessor} className=" padding-cell">
-                   { props.data.find((item) => item.year === "average")?.[column.accessor] || ""}
-                    {column.Header !== "Year" ? "%" : ""}
-                  </td>
-                
-               })}
+
+
+                return <td key={column.accessor} className=" padding-cell">
+                  {props.data.find((item) => item.year === "average")?.[column.accessor] || ""}
+                  {column.Header !== "Year" ? "%" : ""}
+                </td>
+
+              })}
             </tr>
-           
+
             <tr>
               {columns.map((column) => (
                 <td key={column.accessor} className="padding-cell">
@@ -167,8 +162,8 @@ const Table = (props) => {
             </tr>
           </tfoot>
 
-      
-         
+
+
         </table>
       </div>
     </div>
@@ -177,38 +172,38 @@ const Table = (props) => {
 }
 
 
-const getCellColorClass = (value,cell) =>{
-  if(cell.column.Header === "Year" ){
+const getCellColorClass = (value, cell) => {
+  if (cell.column.Header === "Year") {
     return "cell-white";
   }
-  if (value>0 && value<2)  {
+  if (value > 0 && value < 2) {
     return "cell-green-1";
   }
-  if(value>2 && value<4  ){
+  if (value > 2 && value < 4) {
     return "cell-green-2";
   }
-  if(value>4 && value<6  ){
+  if (value > 4 && value < 6) {
     return "cell-green-3";
   }
-  if(value>6 && value<8  ){
+  if (value > 6 && value < 8) {
     return "cell-green-4";
   }
-  if(value>8 && value<100  ){
+  if (value > 8 && value < 100) {
     return "cell-green-5";
   }
-  if(value<0 && value>-2  ){
+  if (value < 0 && value > -2) {
     return "cell-red-1";
   }
-  if(value<-2 && value>-4  ){
+  if (value < -2 && value > -4) {
     return "cell-red-2";
   }
-  if(value<-4 && value>-6  ){
+  if (value < -4 && value > -6) {
     return "cell-red-3";
   }
-  if(value<-6 && value>-100  ){
+  if (value < -6 && value > -100) {
     return "cell-red-4";
   }
-  
+
   return "cell-white";
 }
 export default StockTable;
