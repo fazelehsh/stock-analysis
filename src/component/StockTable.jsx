@@ -79,20 +79,20 @@ const Table = (props) => {
   const [hoveredRowIndex, setHoveredRowIndex] = useState(null);
   const [hoveredColumnIndex, setHoveredColumnIndex] = useState(null);
   return (
-    <div className="App  relative overflow-x-auto">
-      <div className="container">
-        <table {...getTableProps()} className="custom-table w-full  w-full text-sm  items-center table-auto text-black  ">
+    <div className="App  relative ">
+      <div className="container ">
+        <table {...getTableProps()} className="custom-table table-fixed  items-center  text-black    ">
 
-          <thead className="p-3 items-center cell-margin ">
+          <thead className="p-3 items-center   bg-slate-200 ">
 
             {headerGroups.map((headerGroup) =>
             (
-              <tr {...headerGroup.getHeaderGroupProps()} className="p-3 items-center cell-margin ">
+              <tr {...headerGroup.getHeaderGroupProps()} className="p-3 items-center w-1/12  cell-margin  ">
 
                 {headerGroup.headers.map((column, index) =>
                 (
                   <th {...column.getHeaderProps()}
-                    className={`column-${index} ${hoveredColumnIndex === index ? 'hovered' : ''
+                    className={`rounded-md w-1/12 column-${index} ${hoveredColumnIndex === index ? 'hovered' : ''
                       }`}
                   >
                     {column.render("Header")}
@@ -106,7 +106,7 @@ const Table = (props) => {
 
           </thead>
 
-          <tbody {...getTableBodyProps()} className="p-3 cell-margin ">
+          <tbody {...getTableBodyProps()} className="p-3 cell-margin  ">
 
 
             {rows.map((row, rowIndex) => {
@@ -115,18 +115,18 @@ const Table = (props) => {
               return (
 
                 <tr {...row.getRowProps()}
-                  className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''}`}  >
+                  className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''} `}  >
                   {row.cells.map((cell, columnIndex) => (
-                    <td {...cell.getCellProps()} className={`${getCellColorClass(cell.value, cell)}  padding-cell rounded-lg px-4 py-2  ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}`}
-                      onMouseEnter={() => {
+                    <td {...cell.getCellProps()} className={`${getCellColorClass(cell.value, cell)} padding-cell w-1/12 rounded-lg  ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}`}
+                      onMouseEnter={() => { 
                         setHoveredRowIndex(rowIndex);
                         setHoveredColumnIndex(columnIndex);
                       }}
                       onMouseLeave={() => {
                         setHoveredRowIndex(null);
                         setHoveredColumnIndex(null);
-                      }}> 
-                       {cell.column.Header !== "Year" ? `%${cell.value}` : cell.render("Cell")}
+                      }}>
+                      {cell.column.Header !== "Year" ? `%${cell.value}` : cell.render("Cell")}
                     </td>
                   ))}
                 </tr>
@@ -140,22 +140,33 @@ const Table = (props) => {
 
 
 
-          <tfoot>
+          <tfoot className="mt-4">
             <tr>
+
+
               {columns.map((column) => {
+                const averageRow = props.data.find(item => item.year === "average");
+                const averageValue = averageRow ? averageRow[column.accessor] : "";
 
-
-                return <td key={column.accessor} className=" padding-cell">
-                  {props.data.find((item) => item.year === "average")?.[column.accessor] || ""}
-                  {column.Header !== "Year" ? "%" : ""}
-                </td>
-
+                return (
+                  <td
+                    key={column.accessor}
+                    className={`padding-cell  rounded-md ${getCellColorClass(averageValue, { column })}`}
+                  >
+                    {averageValue !== "average"  ? `%${averageValue}` : "average"}
+                   
+                   
+                  </td>
+                );
               })}
+
+
+
             </tr>
 
             <tr>
               {columns.map((column) => (
-                <td key={column.accessor} className="padding-cell">
+                <td key={column.accessor} className="padding-cell ">
                   {props.data.find(item => item.year === "standard deviation")?.[column.accessor] || ""}{column.Header !== "Year" ? "%" : ""}
                 </td>
               ))}
