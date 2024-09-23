@@ -133,3 +133,7 @@ tbody:before {
 }
 
 
+.table {
+  table-layout: fixed;
+  width: 180px;
+}
