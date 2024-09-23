@@ -126,6 +126,16 @@ tbody:before {
 }
 
 
+
+
+
+
+.non-hovered {
+  background-color: white; /* Make non-hovered rows white */
+}
+
+
+
 .year-hover {
   background-color: rgba(0, 114, 240, 1);;
  

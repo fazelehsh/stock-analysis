@@ -114,26 +114,28 @@ const Table = (props) => {
 
               return (
 
-                <tr {...row.getRowProps()}
-                  className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''} `}  >
+                <tr
+                  {...row.getRowProps()}
+                  className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''}`}
+                  onMouseEnter={() => setHoveredRowIndex(rowIndex)}
+                  onMouseLeave={() => setHoveredRowIndex(null)}
+                >
                   {row.cells.map((cell, columnIndex) => (
-                    <td {...cell.getCellProps()} className={`${getCellColorClass(cell.value, cell)} padding-cell w-1/12 rounded-lg  ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}`}
-                      onMouseEnter={() => { 
-                        setHoveredRowIndex(rowIndex);
-                        setHoveredColumnIndex(columnIndex);
-                      }}
-                      onMouseLeave={() => {
-                        setHoveredRowIndex(null);
-                        setHoveredColumnIndex(null);
-                      }}>
+                    <td
+                      {...cell.getCellProps()}
+                      className={`${getCellColorClass(cell.value, cell)} padding-cell w-1/12 rounded-lg
+                                ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}
+                                ${hoveredRowIndex !== null && hoveredRowIndex !== rowIndex ? 'non-hovered' : ''}`}
+                      onMouseEnter={() => setHoveredColumnIndex(columnIndex)}
+                      onMouseLeave={() => setHoveredColumnIndex(null)}
+                    >
                       {cell.column.Header !== "Year" ? `%${cell.value}` : cell.render("Cell")}
                     </td>
                   ))}
                 </tr>
 
               );
-            })
-            }
+            })}
 
           </tbody>
 
@@ -153,9 +155,9 @@ const Table = (props) => {
                     key={column.accessor}
                     className={`padding-cell  rounded-md ${getCellColorClass(averageValue, { column })}`}
                   >
-                    {averageValue !== "average"  ? `%${averageValue}` : "average"}
-                   
-                   
+                    {averageValue !== "average" ? `%${averageValue}` : "average"}
+
+
                   </td>
                 );
               })}
