@@ -7,9 +7,9 @@ import { calculateStockDataForTable } from '../utils/StockCalc'
 
 
 
-function StockDetail(props) {
-  const stockSymbol = props.symbol;
-  const allSymbols = props.allSymbols;
+function StockDetail() {
+  const allSymbols = ["MSFT" , "TSCO.LON" , "IBM"]
+  const [selectedSymbol, setSelectedSymbol] = useState(allSymbols[0]);
 
   const [stockData, setStockData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -52,8 +52,12 @@ function StockDetail(props) {
 
   return <div className="container mx-auto ">
     <div className=" flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+    {allSymbols.map((item) =>{return <button onClick={() => setSelectedSymbol(item)} className="open && 'bg-gray-100',
+									'group inline-flex items-center rounded-sm p-1.5 text-gray-700  focus:outline-none active:bg-gray-100'font-medium justify-around">
+      {item}
+    </button>})}
       <div className=" flex-1">
-        <StockTable stockData={calculatedDataList.find((item) => item.symbol === stockSymbol).calcData} />
+        <StockTable stockData={calculatedDataList.find((item) => item.symbol === selectedSymbol).calcData} />
       </div>
       <div>
         <StockChart stockDataList={calculatedDataList} className=" flex-1" />
