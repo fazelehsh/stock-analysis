@@ -44,10 +44,16 @@ function StockDetail(props) {
 
   const calculatedDataList = stockData.map((data) => { return { symbol: data.symbol, calcData: calculateStockDataForTable(data.list) } });
 
-  return <>
-    <StockTable stockData={calculatedDataList.find((item)=>item.symbol === stockSymbol).calcData} />
-    <StockChart stockDataList={calculatedDataList} />
-  </>
+  return <div className="container mx-auto ">
+    <div className=" flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+      <div className=" flex-1">
+        <StockTable stockData={calculatedDataList.find((item) => item.symbol === stockSymbol).calcData} />
+      </div>
+      <div >
+        <StockChart stockDataList={calculatedDataList} className=" flex-1" />
+      </div>
+    </div>
+  </div>
 };
 
 

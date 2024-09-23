@@ -147,3 +147,10 @@ tbody:before {
   table-layout: fixed;
   width: 180px;
 }
+
+
+
+
+.spacer {
+  margin-bottom: 50px; 
+}

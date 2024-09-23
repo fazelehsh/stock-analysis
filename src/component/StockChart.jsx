@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 
 const StockChart = (props) => {
   return (
+    
     <Line
       data={{
         datasets: props.stockDataList.map((item, index) => {
@@ -32,21 +33,31 @@ const StockChart = (props) => {
               drawBorder: false,
             },
             ticks: {
-              display: true, // Keeps the labels visible
+              display: true, 
             },
+            ticks: {
+              display: true,
+              callback: (value) => `%${value}`
+            },
+            title: {
+              display: true,
+              text: 'Return', 
+            }, 
             border: {
-              display: false, // Hides the right border line
+              display: false, 
             },
 
           },
         },
         elements: {
           line: {
-            borderWidth: 2 // Optional: adjust line thickness
+            borderWidth: 2 
           }
         }
       }} />
 
+
+      
   );
 }
 
