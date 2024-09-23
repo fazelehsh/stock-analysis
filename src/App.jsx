@@ -13,7 +13,7 @@ function App() {
       {item}
     </button>})}
     
-    <StockDetail key={`${symbol}-Table`} symbol={symbol} allSymbols={allSymbols} />
+    <StockDetail key={symbol} symbol={symbol} allSymbols={allSymbols} />
   </>;
 };
 

@@ -69,20 +69,44 @@ const calculateStockDataForTable = (data) => {
 
 
 
- /*
-  returns.forEach(item => {
-    if (item.year !== "average" && item.year !== "standard deviation") {
-      const annualReturn = Object.values(item).slice(1) // Exclude year
-        .reduce((acc, curr) => acc * (1 + curr / 100), 1) - 1; // Convert to decimal and calculate
-      item['Annual Return'] = (annualReturn * 100).toFixed(2); // Store as percentage
-    }
+
+
+
+  const annualReturns = [];
+
+  returns.forEach((item) => {
+    const months = Object.keys(item).filter((key) => key !== 'year');
+
+    const annualReturn = months.reduce((acc, month) => {
+      const monthValue = parseFloat(item[month]);
+      if (!isNaN(monthValue)) {
+        return acc * (1 + monthValue / 100);
+      }
+      return acc;
+    }, 1) - 1;
+
+    annualReturns.push({
+      year: item.year,
+      annualReturn: (annualReturn * 100).toFixed(2)  // Convert to percentage and format
+    });
   });
-*/
+
+  console.log(annualReturns);
+  /*const annualReturns =
+    returns.forEach((item) => {
+      const months = Object.keys(item).filter((key) => key !== 'year');
+      const annualReturns = months.reduce((acc, month) => {
+        return acc * (1 + Number(item[month]) / 100);
+      }, 1) - 1;
+      
+      item.annualReturns = (annualReturns * 100).toFixed(2); // Annual return as percentage
+    });*/
+
 
   returns.push(av);
   returns.push(sd);
-  return returns;
+  return { returns: returns, annualReturns: annualReturns };
 };
 
-export {calculateStockDataForTable}
+export { calculateStockDataForTable }
 

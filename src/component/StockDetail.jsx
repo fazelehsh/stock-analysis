@@ -21,9 +21,12 @@ function StockDetail(props) {
 
   const loadData = async () => {
     setLoading(true);
+    /*await  (new Promise(function(resolve) {
+      setTimeout(resolve, 200);
+    }));*/
     const allStocksData = await Promise.all(allSymbols.map((symbol) => getDataFromRepo(symbol)));
     setLoading(false);
-    if (allStocksData) {
+    if (allStocksData.every((item)=>item!==null)) {
       setStockData(allStocksData)
     } else {
       setError('Failed to fetch stock data');
@@ -42,14 +45,17 @@ function StockDetail(props) {
 
 
 
-  const calculatedDataList = stockData.map((data) => { return { symbol: data.symbol, calcData: calculateStockDataForTable(data.list) } });
+  const calculatedDataList = stockData.map((data) => {
+    const dataForTable = calculateStockDataForTable(data.list);
+     return { symbol: data.symbol, calcData: dataForTable.returns , annualReturns:dataForTable.annualReturns } 
+    });
 
   return <div className="container mx-auto ">
     <div className=" flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
       <div className=" flex-1">
         <StockTable stockData={calculatedDataList.find((item) => item.symbol === stockSymbol).calcData} />
       </div>
-      <div >
+      <div>
         <StockChart stockDataList={calculatedDataList} className=" flex-1" />
       </div>
     </div>
