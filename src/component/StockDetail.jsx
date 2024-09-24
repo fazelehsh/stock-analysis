@@ -47,7 +47,7 @@ function StockDetail() {
 
   const calculatedDataList = stockData.map((data) => {
     const dataForTable = calculateStockDataForTable(data.list);
-     return { symbol: data.symbol, calcData: dataForTable.returns , annualReturns:dataForTable.annualReturns } 
+     return { symbol: data.symbol, calcData: dataForTable.returns , annualReturns:dataForTable.annualReturns   } 
     });
 
   return <div className="container mx-auto ">
@@ -56,13 +56,16 @@ function StockDetail() {
 									'group inline-flex items-center rounded-sm p-1.5 text-gray-700  focus:outline-none active:bg-gray-100'font-medium justify-around">
       {item}
     </button>})}
+    <div className="space-y-0.5 ">
       <div className=" flex-1">
         <StockTable stockData={calculatedDataList.find((item) => item.symbol === selectedSymbol).calcData} />
       </div>
       <div>
         <StockChart stockDataList={calculatedDataList} className=" flex-1" />
       </div>
-    </div>
+      </div>
+      </div>
+    
   </div>
 };
 

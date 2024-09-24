@@ -74,8 +74,8 @@ const Table = (props) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: props.data.filter((item) => item.year !== "average" && item.year !== "standard deviation") });
 
-
-
+  //const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredHeaderGroupIndex, setHoveredHeaderGroupIndex] = useState(null);
   const [hoveredRowIndex, setHoveredRowIndex] = useState(null);
   const [hoveredColumnIndex, setHoveredColumnIndex] = useState(null);
   return (
@@ -85,15 +85,19 @@ const Table = (props) => {
 
           <thead className="p-3 items-center   bg-slate-200 ">
 
-            {headerGroups.map((headerGroup) =>
+            {headerGroups.map((headerGroup , headerGroupIndex) =>
             (
-              <tr {...headerGroup.getHeaderGroupProps()} className="p-3 items-center w-1/12  cell-margin  ">
-
+              <tr {...headerGroup.getHeaderGroupProps()} className=" p-3 items-center w-1/12  cell-margin "
+              onMouseEnter={() => setHoveredHeaderGroupIndex(headerGroupIndex)}
+                      onMouseLeave={() => setHoveredHeaderGroupIndex(null)} >
                 {headerGroup.headers.map((column, index) =>
                 (
                   <th {...column.getHeaderProps()}
                     className={`rounded-md w-1/12 column-${index} ${hoveredColumnIndex === index ? 'hovered' : ''
-                      }`}
+                      }
+                      
+                       `}
+                       
                   >
                     {column.render("Header")}
                   </th>
@@ -109,14 +113,16 @@ const Table = (props) => {
           <tbody {...getTableBodyProps()} className="p-3 cell-margin  ">
 
 
-            {rows.map((row, rowIndex) => {
+            {rows.map((row, rowIndex,) => {
               prepareRow(row);
 
               return (
 
                 <tr
                   {...row.getRowProps()}
-                  className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''}`}
+                  className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''}
+                  
+                              `}
                   onMouseEnter={() => setHoveredRowIndex(rowIndex)}
                   onMouseLeave={() => setHoveredRowIndex(null)}
                 >
@@ -125,7 +131,10 @@ const Table = (props) => {
                       {...cell.getCellProps()}
                       className={`${getCellColorClass(cell.value, cell)} padding-cell w-1/12 rounded-lg
                                 ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}
-                                ${hoveredRowIndex !== null && hoveredRowIndex !== rowIndex ? 'non-hovered' : ''}`}
+                                ${hoveredColumnIndex == 0 && hoveredRowIndex !== rowIndex ? 'hoveredd' : ''}
+                                ${hoveredHeaderGroupIndex !== null  && hoveredHeaderGroupIndex !== columnIndex ? 'hoveredd' : ''}
+                                
+                               `}
                       onMouseEnter={() => setHoveredColumnIndex(columnIndex)}
                       onMouseLeave={() => setHoveredColumnIndex(null)}
                     >

@@ -52,6 +52,8 @@ const StockChart = (props) => {
               title: {
                 display: true,
                 text: 'Return',
+                //position: 'top', 
+                padding: { top: 10 }, 
               },
               border: {
                 display: false,

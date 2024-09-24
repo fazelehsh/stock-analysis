@@ -130,7 +130,7 @@ tbody:before {
 
 
 
-.non-hovered {
+.hoveredd {
   background-color: white; /* Make non-hovered rows white */
 }
 
@@ -154,3 +154,5 @@ tbody:before {
 .spacer {
   margin-bottom: 50px; 
 }
+
+
