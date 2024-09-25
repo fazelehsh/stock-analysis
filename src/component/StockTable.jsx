@@ -80,10 +80,10 @@ const Table = (props) => {
   const [hoveredColumnIndex, setHoveredColumnIndex] = useState(null);
   return (
     <div className="App  relative ">
-      <div className="container ">
-        <table {...getTableProps()} className="custom-table table fixed-table items-center  text-black w-full   ">
+      <div className="container table-container ">
+        <table {...getTableProps()} className="custom-table table-layput fixed-table items-center  text-black  1,280  ">
 
-          <thead className="p-3 items-center   bg-slate-200 ">
+          <thead className="p-3 items-center  border-2 border-black  rounded-lg head-layout border-collapse">
 
             {headerGroups.map((headerGroup , headerGroupIndex) =>
             (
@@ -92,7 +92,7 @@ const Table = (props) => {
                       onMouseLeave={() => setHoveredHeaderGroupIndex(null)} >
                 {headerGroup.headers.map((column, index) =>
                 (
-                  <th {...column.getHeaderProps()}
+                  <th colSpan="100%" {...column.getHeaderProps() }
                     className={`rounded-md w-1/12 column-${index} ${hoveredColumnIndex === index ? 'hovered' : ''
                       }
                       

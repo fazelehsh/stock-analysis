@@ -143,9 +143,13 @@ tbody:before {
 }
 
 
-.table {
-  table-layout: fixed;
-  width: 180px;
+.table-layout {
+ 
+width: Fixed (1,280px)px;
+height: Hug (672px)px;
+gap: 16px;
+opacity: 0px;
+
 }
 
 
@@ -155,4 +159,24 @@ tbody:before {
   margin-bottom: 50px; 
 }
 
+.table-container {
+  border: 2px solid  #f4f5f7; /* Black border around the whole table */
+  padding: 10px; /* Optional padding inside the border */
+  border-radius: 6px; /* Optional rounded corners */
+}
 
+
+/*var(--RadiusSystemradius-xs) var(--RadiusSystemradius-xs) var(--RadiusSystemradius-4xs) var(--RadiusSystemradius-4xs)*/
+
+
+
+.head-layout{
+  width: Fixed (1,280px)px;
+height: Fixed (48px)px;
+padding: 0px 24px 0px 24px;
+gap: 0px;
+border-radius: var(--RadiusSystemradius-xs) var(--RadiusSystemradius-xs) var(--RadiusSystemradius-4xs) var(--RadiusSystemradius-4xs);
+opacity: 0px;
+background-color: #F4F5F7
+
+}
