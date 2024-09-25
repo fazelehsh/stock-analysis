@@ -143,8 +143,8 @@ tbody:before {
 }
 
 
-.table-layout {
- 
+.table {
+table-layout: fixed;
 width: Fixed (1,280px)px;
 height: Hug (672px)px;
 gap: 16px;

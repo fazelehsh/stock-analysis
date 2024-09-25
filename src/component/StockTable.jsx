@@ -81,23 +81,24 @@ const Table = (props) => {
   return (
     <div className="App  relative ">
       <div className="container table-container ">
-        <table {...getTableProps()} className="custom-table table-layput fixed-table items-center  text-black  1,280  ">
+        <table {...getTableProps()} className="custom-table table fixed-table items-center w-full text-black  1,280  ">
 
-          <thead className="p-3 items-center  border-2 border-black  rounded-lg head-layout border-collapse">
+          <thead className="p-3 items-center w-full border-2 border-black head-layout rounded-lg head-layout ">
 
-            {headerGroups.map((headerGroup , headerGroupIndex) =>
+            {headerGroups.map((headerGroup, headerGroupIndex) =>
             (
               <tr {...headerGroup.getHeaderGroupProps()} className=" p-3 items-center w-1/12  cell-margin "
-              onMouseEnter={() => setHoveredHeaderGroupIndex(headerGroupIndex)}
-                      onMouseLeave={() => setHoveredHeaderGroupIndex(null)} >
+                onMouseEnter={() => setHoveredHeaderGroupIndex(headerGroupIndex)}
+                onMouseLeave={() => setHoveredHeaderGroupIndex(null)} >
                 {headerGroup.headers.map((column, index) =>
                 (
-                  <th colSpan="100%" {...column.getHeaderProps() }
-                    className={`rounded-md w-1/12 column-${index} ${hoveredColumnIndex === index ? 'hovered' : ''
+                  <th 
+                    {...column.getHeaderProps()}
+                    className={`p-3 text-center border-b border-black rounded-md w-1/12 column-${index} ${hoveredColumnIndex === index ? 'hovered' : ''
                       }
                       
                        `}
-                       
+
                   >
                     {column.render("Header")}
                   </th>
@@ -132,7 +133,7 @@ const Table = (props) => {
                       className={`${getCellColorClass(cell.value, cell)} padding-cell w-1/12 rounded-lg
                                 ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}
                                 ${hoveredColumnIndex == 0 && hoveredRowIndex !== rowIndex ? 'hoveredd' : ''}
-                                ${hoveredHeaderGroupIndex !== null  && hoveredHeaderGroupIndex !== columnIndex ? 'hoveredd' : ''}
+                                ${hoveredHeaderGroupIndex !== null && hoveredHeaderGroupIndex !== columnIndex ? 'hoveredd' : ''}
                                 
                                `}
                       onMouseEnter={() => setHoveredColumnIndex(columnIndex)}
