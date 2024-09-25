@@ -180,3 +180,10 @@ opacity: 0px;
 background-color: #F4F5F7
 
 }
+
+
+.separator-line {
+  height: 2px; /* Adjust the height as needed */
+  background-color:#F4F5F7; /* Adjust the color as needed */
+  border: none; /* No border */
+}
