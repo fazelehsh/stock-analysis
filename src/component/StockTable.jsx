@@ -87,15 +87,16 @@ const Table = (props) => {
 
             {headerGroups.map((headerGroup, headerGroupIndex) =>
             (
-              <tr {...headerGroup.getHeaderGroupProps()} className=" p-3 items-center w-1/12  cell-margin "
-                onMouseEnter={() => setHoveredHeaderGroupIndex(headerGroupIndex)}
-                onMouseLeave={() => setHoveredHeaderGroupIndex(null)} >
+              <tr {...headerGroup.getHeaderGroupProps()} className=" p-3 items-center w-1/12  cell-margin ">
                 {headerGroup.headers.map((column, index) =>
                 (
                   <th
+                    onMouseEnter={() => setHoveredHeaderGroupIndex(index)}
+                    onMouseLeave={() => setHoveredHeaderGroupIndex(null)}
                     {...column.getHeaderProps()}
-                    className={`p-3 text-center border-b border-black rounded-md w-1/12 column-${index} ${hoveredColumnIndex === index ? 'hovered' : ''
-                      }
+                    className={`p-3 text-center border-b border-black rounded-md w-1/12 column-${index} 
+                               ${hoveredColumnIndex !== 0 && hoveredColumnIndex === index ? 'hovered' : ''}
+                               ${hoveredHeaderGroupIndex !== 0 && hoveredHeaderGroupIndex === index ? 'hovered' : ''}
                       
                        `}
 
@@ -110,87 +111,85 @@ const Table = (props) => {
             )}
 
           </thead>
-          
-            <tbody {...getTableBodyProps()} className="p-3 cell-margin  ">
+
+          <tbody {...getTableBodyProps()} className="p-3 cell-margin  ">
 
 
-              {rows.map((row, rowIndex,) => {
-                prepareRow(row);
+            {rows.map((row, rowIndex,) => {
+              prepareRow(row);
 
-                return (
+              return (
 
-                  <tr
-                    {...row.getRowProps()}
-                    className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''}
-                  
-                              `}
-                    onMouseEnter={() => setHoveredRowIndex(rowIndex)}
-                    onMouseLeave={() => setHoveredRowIndex(null)}
-                  >
-                    {row.cells.map((cell, columnIndex) => (
-                      <td
-                        {...cell.getCellProps()}
-                        className={`${getCellColorClass(cell.value, cell)} padding-cell w-1/12 rounded-lg
+                <tr
+                  {...row.getRowProps()}
+                  className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''}`}
+                  onMouseEnter={() => setHoveredRowIndex(rowIndex)}
+                  onMouseLeave={() => setHoveredRowIndex(null)}
+                >
+                  {row.cells.map((cell, columnIndex) => (
+                    <td
+                      {...cell.getCellProps()}
+                      className={`${getCellColorClass(cell.value, cell)} padding-cell w-1/12 rounded-lg
                                 ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}
                                 ${hoveredColumnIndex == 0 && hoveredRowIndex !== rowIndex ? 'hoveredd' : ''}
                                 ${hoveredHeaderGroupIndex !== null && hoveredHeaderGroupIndex !== columnIndex ? 'hoveredd' : ''}
                                 
                                `}
-                        onMouseEnter={() => setHoveredColumnIndex(columnIndex)}
-                        onMouseLeave={() => setHoveredColumnIndex(null)}
-                      >
-                        {cell.column.Header !== "Year" ? `%${cell.value}` : cell.render("Cell")}
-                      </td>
-                    ))}
-                  </tr>
+                      onMouseEnter={() => setHoveredColumnIndex(columnIndex)}
+                      onMouseLeave={() => setHoveredColumnIndex(null)}
+                    >
+                      {cell.column.Header !== "Year" ? `%${cell.value}` : cell.render("Cell")}
+                    </td>
+                  ))}
+                </tr>
 
+              );
+            })}
+
+
+            {/* Add a separator row */}
+            <tr className="border-t-2 border-black">
+              <td colSpan={columns.length} className="separator-line"></td>
+            </tr>
+
+          </tbody>
+
+
+
+
+          <tfoot className="mt-4">
+            <tr className="border-t-2 border-black">
+
+
+              {columns.map((column) => {
+                const averageRow = props.data.find(item => item.year === "average");
+                const averageValue = averageRow ? averageRow[column.accessor] : "";
+
+                return (
+                  <td
+                    key={column.accessor}
+                    className={`padding-cell  rounded-md ${getCellColorClass(averageValue, { column })}`}
+                  >
+                    {averageValue !== "average" ? `%${averageValue}` : "average"}
+
+
+                  </td>
                 );
               })}
 
 
-              {/* Add a separator row */}
-              <tr className="border-t-2 border-black">
-                <td colSpan={columns.length} className="separator-line"></td>
-              </tr>
 
-            </tbody>
+            </tr>
 
+            <tr>
+              {columns.map((column) => (
+                <td key={column.accessor} className="padding-cell ">
+                  {props.data.find(item => item.year === "standard deviation")?.[column.accessor] || ""}{column.Header !== "Year" ? "%" : ""}
+                </td>
+              ))}
+            </tr>
+          </tfoot>
 
-
-
-            <tfoot className="mt-4">
-              <tr className="border-t-2 border-black">
-
-
-                {columns.map((column) => {
-                  const averageRow = props.data.find(item => item.year === "average");
-                  const averageValue = averageRow ? averageRow[column.accessor] : "";
-
-                  return (
-                    <td
-                      key={column.accessor}
-                      className={`padding-cell  rounded-md ${getCellColorClass(averageValue, { column })}`}
-                    >
-                      {averageValue !== "average" ? `%${averageValue}` : "average"}
-
-
-                    </td>
-                  );
-                })}
-
-
-
-              </tr>
-
-              <tr>
-                {columns.map((column) => (
-                  <td key={column.accessor} className="padding-cell ">
-                    {props.data.find(item => item.year === "standard deviation")?.[column.accessor] || ""}{column.Header !== "Year" ? "%" : ""}
-                  </td>
-                ))}
-              </tr>
-            </tfoot>
-          
 
 
         </table>

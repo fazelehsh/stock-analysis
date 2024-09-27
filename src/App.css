@@ -1,4 +1,6 @@
-
+* {
+  transition: background-color 160ms ease-out;
+}
 
 #root {
   max-width: 1280px;
@@ -13,9 +15,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -24,6 +28,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -45,7 +50,7 @@
 
 .cell-green-5 {
   background: var(--Color-Green-Green500, #33A159);
-  
+
 }
 
 .cell-green-4 {
@@ -99,27 +104,27 @@
 
 
 tbody:before {
-  content:"@";
-  display:block;
-  line-height:10px;
-  text-indent:-99999px;
+  content: "@";
+  display: block;
+  line-height: 10px;
+  text-indent: -99999px;
 }
 
 .custom-table {
-  border-collapse: separate; 
-  border-spacing: 10px;     
+  border-collapse: separate;
+  border-spacing: 10px;
 }
 
 
 
-.custom-table tbody tr.hovered  {
-  background-color:  rgba(0, 114, 240, 1)
+.custom-table tbody tr.hovered {
+  background-color: rgba(0, 114, 240, 1)
 }
 
 
 .custom-table thead th.hovered,
 .custom-table tbody tr.hovered td.hovered {
-  background-color:  rgba(0, 132, 240, 1);
+  background-color: rgba(0, 132, 240, 1);
 
 
 
@@ -131,24 +136,26 @@ tbody:before {
 
 
 .hoveredd {
-  background-color: white; /* Make non-hovered rows white */
+  background-color: white;
+  /* Make non-hovered rows white */
 }
 
 
 
 .year-hover {
-  background-color: rgba(0, 114, 240, 1);;
- 
-  
+  background-color: rgba(0, 114, 240, 1);
+  ;
+
+
 }
 
 
 .table {
-table-layout: fixed;
-width: Fixed (1,280px)px;
-height: Hug (672px)px;
-gap: 16px;
-opacity: 0px;
+  table-layout: fixed;
+  width: Fixed (1, 280px)px;
+  height: Hug (672px)px;
+  gap: 16px;
+  opacity: 0px;
 
 }
 
@@ -156,13 +163,16 @@ opacity: 0px;
 
 
 .spacer {
-  margin-bottom: 50px; 
+  margin-bottom: 50px;
 }
 
 .table-container {
-  border: 2px solid  #f4f5f7; /* Black border around the whole table */
-  padding: 10px; /* Optional padding inside the border */
-  border-radius: 6px; /* Optional rounded corners */
+  border: 2px solid #f4f5f7;
+  /* Black border around the whole table */
+  padding: 10px;
+  /* Optional padding inside the border */
+  border-radius: 6px;
+  /* Optional rounded corners */
 }
 
 
@@ -170,20 +180,22 @@ opacity: 0px;
 
 
 
-.head-layout{
-  width: Fixed (1,280px)px;
-height: Fixed (48px)px;
-padding: 0px 24px 0px 24px;
-gap: 0px;
-border-radius: var(--RadiusSystemradius-xs) var(--RadiusSystemradius-xs) var(--RadiusSystemradius-4xs) var(--RadiusSystemradius-4xs);
-opacity: 0px;
-background-color: #F4F5F7
-
+.head-layout {
+  width: Fixed (1, 280px)px;
+  height: Fixed (48px)px;
+  padding: 0px 24px 0px 24px;
+  gap: 0px;
+  border-radius: var(--RadiusSystemradius-xs) var(--RadiusSystemradius-xs) var(--RadiusSystemradius-4xs) var(--RadiusSystemradius-4xs);
+  opacity: 0px;
+  background-color: #F4F5F7
 }
 
 
 .separator-line {
-  height: 2px; /* Adjust the height as needed */
-  background-color:#F4F5F7; /* Adjust the color as needed */
-  border: none; /* No border */
+  height: 2px;
+  /* Adjust the height as needed */
+  background-color: #F4F5F7;
+  /* Adjust the color as needed */
+  border: none;
+  /* No border */
 }
