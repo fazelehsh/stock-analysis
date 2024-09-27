@@ -83,21 +83,22 @@ const Table = (props) => {
       <div className="container table-container  ">
         <table {...getTableProps()} className="custom-table table fixed-table items-center w-full text-black  1,280  ">
 
-          <thead className="p-3 items-center w-full border-2 border-black head-layout rounded-lg head-layout ">
+          <thead className="p-3 items-center w-full border-2 border-black head-layout rounded-lg head-layout">
 
             {headerGroups.map((headerGroup, headerGroupIndex) =>
             (
-              <tr {...headerGroup.getHeaderGroupProps()} className=" p-3 items-center w-1/12  cell-margin ">
+              <tr {...headerGroup.getHeaderGroupProps()} className=" p-3 items-center w-1/12  cell-margin rounded-md border-b">
                 {headerGroup.headers.map((column, index) =>
                 (
                   <th
                     onMouseEnter={() => setHoveredHeaderGroupIndex(index)}
                     onMouseLeave={() => setHoveredHeaderGroupIndex(null)}
                     {...column.getHeaderProps()}
-                    className={`p-3 text-center border-b border-black rounded-md w-1/12 column-${index} 
+                    className={`p-3 text-center   w-1/12 column-${index} 
                                ${hoveredColumnIndex !== 0 && hoveredColumnIndex === index ? 'hovered' : ''}
                                ${hoveredHeaderGroupIndex !== 0 && hoveredHeaderGroupIndex === index ? 'hovered' : ''}
-                      
+                               ${index === 0 ? 'first-header-th':''}
+                               ${index === headerGroup.headers.length-1 ? 'last-header-th':''}
                        `}
 
                   >
@@ -111,8 +112,8 @@ const Table = (props) => {
             )}
 
           </thead>
-
-          <tbody {...getTableBodyProps()} className="p-3 cell-margin  ">
+          <br />
+          <tbody {...getTableBodyProps()} className="p-3 cell-margin  bg-white">
 
 
             {rows.map((row, rowIndex,) => {
@@ -129,16 +130,18 @@ const Table = (props) => {
                   {row.cells.map((cell, columnIndex) => (
                     <td
                       {...cell.getCellProps()}
-                      className={`${getCellColorClass(cell.value, cell)} padding-cell w-1/12 rounded-lg
+                      className="w-1/12 p-[4px]"
+                      onMouseEnter={() => setHoveredColumnIndex(columnIndex)}
+                      onMouseLeave={() => setHoveredColumnIndex(null)}
+                    >
+                      <div className={`${getCellColorClass(cell.value, cell)} padding-cell  rounded-lg
                                 ${columnIndex === 0 && hoveredRowIndex === rowIndex ? "year-hover" : ''}
                                 ${hoveredColumnIndex == 0 && hoveredRowIndex !== rowIndex ? 'hoveredd' : ''}
                                 ${hoveredHeaderGroupIndex !== null && hoveredHeaderGroupIndex !== columnIndex ? 'hoveredd' : ''}
                                 
                                `}
-                      onMouseEnter={() => setHoveredColumnIndex(columnIndex)}
-                      onMouseLeave={() => setHoveredColumnIndex(null)}
-                    >
-                      {cell.column.Header !== "Year" ? `%${cell.value}` : cell.render("Cell")}
+                      >{cell.column.Header !== "Year" ? `%${cell.value}` : cell.render("Cell")}</div>
+
                     </td>
                   ))}
                 </tr>
@@ -148,7 +151,7 @@ const Table = (props) => {
 
 
             {/* Add a separator row */}
-            <tr className="border-t-2 border-black">
+            <tr className="border-none">
               <td colSpan={columns.length} className="separator-line"></td>
             </tr>
 
@@ -157,8 +160,8 @@ const Table = (props) => {
 
 
 
-          <tfoot className="mt-4">
-            <tr className="border-t-2 border-black">
+          <tfoot className="mt-4 ">
+            <tr className="">
 
 
               {columns.map((column) => {
