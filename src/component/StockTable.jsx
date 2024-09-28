@@ -83,22 +83,22 @@ const Table = (props) => {
       <div className="container table-container  ">
         <table {...getTableProps()} className="custom-table table fixed-table items-center w-full text-black  1,280  ">
 
-          <thead className="p-3 items-center w-full border-2 border-black head-layout rounded-lg head-layout">
+          <thead className="p-3 items-center w-full border-2 border-black  rounded-lg head-layout  ">
 
             {headerGroups.map((headerGroup, headerGroupIndex) =>
             (
-              <tr {...headerGroup.getHeaderGroupProps()} className=" p-3 items-center w-1/12  cell-margin rounded-md border-b">
+              <tr {...headerGroup.getHeaderGroupProps()} className=" p-3 items-center w-1/12  cell-margin rounded-md border-b ">
                 {headerGroup.headers.map((column, index) =>
                 (
                   <th
                     onMouseEnter={() => setHoveredHeaderGroupIndex(index)}
                     onMouseLeave={() => setHoveredHeaderGroupIndex(null)}
                     {...column.getHeaderProps()}
-                    className={`p-3 text-center   w-1/12 column-${index} 
+                    className={`p-3 text-center text-sm table-container  w-1/12 column-${index} 
                                ${hoveredColumnIndex !== 0 && hoveredColumnIndex === index ? 'hovered' : ''}
                                ${hoveredHeaderGroupIndex !== 0 && hoveredHeaderGroupIndex === index ? 'hovered' : ''}
-                               ${index === 0 ? 'first-header-th':''}
-                               ${index === headerGroup.headers.length-1 ? 'last-header-th':''}
+                               ${index === 0 ? 'first-header-th' : ''}
+                               ${index === headerGroup.headers.length - 1 ? 'last-header-th' : ''}
                        `}
 
                   >
@@ -150,17 +150,18 @@ const Table = (props) => {
             })}
 
 
-            {/* Add a separator row */}
+            {/* Add a separator row 
             <tr className="border-none">
-              <td colSpan={columns.length} className="separator-line"></td>
-            </tr>
+              <td colSpan={columns.length} className="separator-line "></td>
+            </tr>*/}
 
           </tbody>
 
 
 
 
-          <tfoot className="mt-4 ">
+          <tfoot className="mt-4  cell-margin p-3 ">
+
             <tr className="">
 
 
@@ -171,9 +172,14 @@ const Table = (props) => {
                 return (
                   <td
                     key={column.accessor}
-                    className={`padding-cell  rounded-md ${getCellColorClass(averageValue, { column })}`}
+                    
                   >
-                    {averageValue !== "average" ? `%${averageValue}` : "average"}
+                    <div className={`${getCellColorClass(averageValue, { column })} padding-cell  rounded-lg
+
+                  
+                 `}
+                    >
+                      {averageValue !== "average" ? `%${averageValue}` : "average"}</div>
 
 
                   </td>
@@ -182,14 +188,35 @@ const Table = (props) => {
 
 
 
-            </tr>
+            </tr >
 
-            <tr>
+            <tr  >
+
+            
               {columns.map((column) => (
-                <td key={column.accessor} className="padding-cell ">
-                  {props.data.find(item => item.year === "standard deviation")?.[column.accessor] || ""}{column.Header !== "Year" ? "%" : ""}
-                </td>
+                
+                  <td
+                    key={column.accessor}
+                    
+                  >
+                    <div className=" padding-cell  rounded-lg sd-row">
+                      {props.data.find(item => item.year === "standard deviation")?.[column.accessor] || ""}{column.Header !== "Year" ? "%" : ""}</div>
+
+
+                  </td>
+                  
               ))}
+
+                
+                
+                
+                
+                
+                {/*<td key={column.accessor} className="padding-cell footer-cell sd-row">
+                  <div className="sd-row padding-cell  rounded-lg">
+                  {props.data.find(item => item.year === "standard deviation")?.[column.accessor] || ""}{column.Header !== "Year" ? "%" : ""}</div>
+                </td>
+              */}
             </tr>
           </tfoot>
 
