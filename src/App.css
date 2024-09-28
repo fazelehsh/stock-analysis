@@ -175,7 +175,9 @@ tfoot:before {
   
 }
 
-
+.hovereddd{
+  background-color: #f4f5f7;
+}
 
 .hoveredd {
   background-color: white;
@@ -239,7 +241,7 @@ tfoot:before {
   /* Adjust the height as needed */
   background-color: #D8DBE1;
   /* Adjust the color as needed */
-  border: none;
+ border: none
   /* No border */
  
  
@@ -261,6 +263,6 @@ tfoot:before {
 
 
 .sd-row {
-  background-color: #ffffff8d;
+  background-color: #f4f5f7;
 
 }
