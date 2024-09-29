@@ -1,5 +1,6 @@
 * {
   transition: background-color 160ms ease-out;
+  box-sizing: border-box; 
 }
 
 #root {
@@ -264,7 +265,7 @@ tfoot:before {
 
 .sd-row {
   background-color: #f4f5f7;
-
+  height: 6px; 
 }
 
 
@@ -304,14 +305,20 @@ thead th:nth-child(2), tfoot td:nth-child(2), tbody td:nth-child(2) {
 
 
 
-.custom-table thead th, .custom-table tfoot td, .custom-table tbody td {
+.custom-table thead th, .custom-table tfoot td , .custom-table tbody td  {
   font-size: 12px; 
   width: 10px; 
+  height :5px;
 }
 
 
 tfoot td, tbody td {
   white-space: nowrap; /* Prevents line breaks */
+}
+
+
+.custom-table thead th {
+  min-width: 50px; /* Minimum width for headers */
 }
 
 
@@ -332,3 +339,5 @@ thead th {
   padding: 8px;               /* Add padding for header cells */
   background-color: #f0f0f0;  /* Optional: gives header a background color */
 }
+
+

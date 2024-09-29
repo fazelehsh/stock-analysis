@@ -190,28 +190,19 @@ const Table = (props) => {
 
             </tr >
 
-            <tr  >
+            <tr>
+  {columns.map((column) => {
+    const standardDeviationRow = props.data.find(item => item.year === "standard deviation");
+    const standardDeviationValue = standardDeviationRow ? standardDeviationRow[column.accessor] : "";
 
-            
-              {columns.map((column ) => {
-        // Find the 'standard deviation' row in your data
-        const standardDeviationRow = props.data.find(item => item.year === "standard deviation");
-        const standardDeviationValue = standardDeviationRow ? standardDeviationRow[column.accessor] : "";
+    return (
+      <td key={column.accessor} className={`padding-cell p-[4px] rounded-lg ${standardDeviationValue !== "standard deviation" ? 'hovereddd' : ''}`}>
+        <div className="padding-cell rounded-lg">{standardDeviationValue !== "standard deviation" ? `%${standardDeviationValue}` : "standard deviation"}</div>
+      </td>
+    );
+  })}
+</tr>
 
-        return (
-          <td
-            key={column.accessor}
-            className={`padding-cell p-[4px] rounded-lg ${standardDeviationValue!== "standard deviation" ? 'hovereddd' : ''}`}
-            // Apply the background color here
-          >
-            <div className="padding-cell rounded-lg">{standardDeviationValue !== "standard deviation" ? `%${standardDeviationValue}` : "standard deviation"}</div>
-          </td>
-        );
-      })}
-                
-                  
-                
-            </tr>
           </tfoot>
 
 
