@@ -92,6 +92,10 @@ const StockChart = (props) => {
                     padding: 50,
                   },
                 },
+                hover: {
+                  mode: 'index', // Hovering over a point highlights the entire index (x-axis)
+                  intersect: false // Allows hovering over the entire area
+                },
               }}
               plugins={[legendPaddingPlugin]} // Register the custom plugin
             />
