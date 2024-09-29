@@ -280,9 +280,7 @@ tfoot td, tbody td {
 }
 
 /* Optional: Add consistent width for all columns, including first column */
-table td:first-child, table th:first-child {
-  width: 150px; /* Adjust to fit your desired width */
-}
+
 
 /* For standard deviation cells specific background color */
 

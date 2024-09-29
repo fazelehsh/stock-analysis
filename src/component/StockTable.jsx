@@ -99,7 +99,7 @@ const Table = (props) => {
                                ${hoveredHeaderGroupIndex !== 0 && hoveredHeaderGroupIndex === index ? 'hovered' : ''}
                                ${index === 0 ? 'first-header-th' : ''}
                                ${index === headerGroup.headers.length - 1 ? 'last-header-th' : ''}
-                       `}style={index === 0 ? { width: '160px' } : {}}
+                       `}
 
                   >
                     {column.render("Header")}
