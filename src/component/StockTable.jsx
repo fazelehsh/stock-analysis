@@ -99,7 +99,7 @@ const Table = (props) => {
                                ${hoveredHeaderGroupIndex !== 0 && hoveredHeaderGroupIndex === index ? 'hovered' : ''}
                                ${index === 0 ? 'first-header-th' : ''}
                                ${index === headerGroup.headers.length - 1 ? 'last-header-th' : ''}
-                       `}style={index === 0 ? { width: '140px' } : {}}
+                       `}style={index === 0 ? { width: '160px' } : {}}
 
                   >
                     {column.render("Header")}
@@ -150,10 +150,10 @@ const Table = (props) => {
             })}
 
 
-            {/* Add a separator row */}
+            {/* Add a separator row 
             <tr className="border-none">
               <td colSpan={columns.length} className="separator-line "></td>
-            </tr>
+            </tr>*/}
 
           </tbody>
 
@@ -172,7 +172,7 @@ const Table = (props) => {
                 return (
                   <td
                     key={column.accessor}
-                    className="padding-cell  rounded-lg"
+                    className="padding-cell p-[4px] rounded-lg"
                   >
                     <div className={`${getCellColorClass(averageValue, { column })} padding-cell  rounded-lg
 
@@ -201,10 +201,10 @@ const Table = (props) => {
         return (
           <td
             key={column.accessor}
-            className={`padding-cell  rounded-lg ${standardDeviationValue!== "standard deviation" ? 'hovereddd' : ''}`}
+            className={`padding-cell p-[4px] rounded-lg ${standardDeviationValue!== "standard deviation" ? 'hovereddd' : ''}`}
             // Apply the background color here
           >
-            {standardDeviationValue !== "standard deviation" ? `%${standardDeviationValue}` : "standard deviation"}
+            <div className="padding-cell rounded-lg">{standardDeviationValue !== "standard deviation" ? `%${standardDeviationValue}` : "standard deviation"}</div>
           </td>
         );
       })}

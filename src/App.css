@@ -266,3 +266,30 @@ tfoot:before {
   background-color: #f4f5f7;
 
 }
+
+
+
+
+
+
+tfoot td, tbody td {
+  padding: 10px 15px; /* Apply the same padding */
+  width: auto; /* Allow them to follow the same width rules */
+  text-align: center; /* Keep text alignment consistent */
+  box-sizing: border-box; /* Ensure that padding is included in the element's total width/height */
+}
+
+/* Optional: Add consistent width for all columns, including first column */
+table td:first-child, table th:first-child {
+  width: 150px; /* Adjust to fit your desired width */
+}
+
+/* For standard deviation cells specific background color */
+
+
+
+tfoot tr:first-child {
+  border-top:  1px solid #f4f5f7; /* Thin border */
+  padding-top: 5px; /* Adjust as necessary for spacing */
+}
+/* Add space above the first row of tfoot */
