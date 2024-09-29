@@ -9,9 +9,10 @@ const StockChart = (props) => {
       <Line
         data={{
           datasets: props.stockDataList.map((item, index) => {
-            const isTSCO = item.symbol === "TSCO-LON"; 
+            const isTSCO = item.symbol === "TSCO-LON";
+            const annualReturn = item.annualReturns[0] ? annualReturn || 0 ; 
             return {
-              label: `${item.symbol} ${item.calcData[0].year}`,
+              label: `${item.symbol} (${annualReturn}%)`, // Show stock symbol and annual return percentage in the legend
               data: Object.entries(item.calcData[0]).slice(1),
               fill: false,
               borderColor: getColorByIndex(index),
@@ -64,9 +65,14 @@ const StockChart = (props) => {
           elements: {
             line: {
               borderWidth: 2
-            }
-          }
-        }} />
+            },
+          },
+          plugins: {
+            legend: {
+              position: 'bottom',  // Moves the legend to the bottom
+            },
+          },
+        }}/>
         </div>
       </div>
 
