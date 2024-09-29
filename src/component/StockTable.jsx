@@ -81,7 +81,7 @@ const Table = (props) => {
   return (
     <div className="App  relative ">
       <div className="container table-container  ">
-        <table {...getTableProps()} className="custom-table table fixed-table items-center w-full text-black  1,280  ">
+        <table {...getTableProps()} className="custom-table table fixed-table items-center w-full text-black    ">
 
           <thead className="p-3 items-center w-full border-2 border-black  rounded-lg head-layout  ">
 
