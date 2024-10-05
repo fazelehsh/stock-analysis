@@ -162,7 +162,7 @@ const Table = (props) => {
 
           <tfoot className="mt-4  cell-margin p-3 ">
 
-            <tr className="">
+            <tr>
 
 
               {columns.map((column) => {
@@ -191,17 +191,17 @@ const Table = (props) => {
             </tr >
 
             <tr>
-  {columns.map((column) => {
-    const standardDeviationRow = props.data.find(item => item.year === "standard deviation");
-    const standardDeviationValue = standardDeviationRow ? standardDeviationRow[column.accessor] : "";
+              {columns.map((column) => {
+                const standardDeviationRow = props.data.find(item => item.year === "standard deviation");
+                const standardDeviationValue = standardDeviationRow ? standardDeviationRow[column.accessor] : "";
 
-    return (
-      <td key={column.accessor} className={`padding-cell p-[4px] rounded-lg ${standardDeviationValue !== "standard deviation" ? 'hovereddd' : ''}`}>
-        <div className="padding-cell rounded-lg">{standardDeviationValue !== "standard deviation" ? `%${standardDeviationValue}` : "standard deviation"}</div>
-      </td>
-    );
-  })}
-</tr>
+                return (
+                  <td key={column.accessor} >
+                    <div className={`rounded-lg p-[4px] ${standardDeviationValue !== "standard deviation" ? 'hovereddd' : ''}`}>{standardDeviationValue !== "standard deviation" ? `%${standardDeviationValue}` : "standard deviation"}</div>
+                  </td>
+                );
+              })}
+            </tr>
 
           </tfoot>
 

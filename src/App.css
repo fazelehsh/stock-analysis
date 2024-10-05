@@ -299,9 +299,7 @@ thead th:first-child , tfoot td:first-child, tbody td:first-child {
 }
 
 
-thead th:nth-child(2), tfoot td:nth-child(2), tbody td:nth-child(2) {
-  padding-left: 15px; /* Adjust this value to control the space */
-}
+
 
 
 
