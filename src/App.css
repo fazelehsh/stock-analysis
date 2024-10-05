@@ -307,8 +307,8 @@ thead th:nth-child(2), tfoot td:nth-child(2), tbody td:nth-child(2) {
 
 .custom-table thead th, .custom-table tfoot td , .custom-table tbody td  {
   font-size: 12px; 
-  width: 10px; 
-  height :5px;
+  width: 30px; 
+  height :10px;
 }
 
 
@@ -339,5 +339,3 @@ thead th {
   padding: 8px;               /* Add padding for header cells */
   background-color: #f0f0f0;  /* Optional: gives header a background color */
 }
-
-
