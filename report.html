@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>Introduction<br/><br/>In this project, we have developed a Stock Analysis Application using React.js, designed to fetch, process, and visually display stock performance data for selected companies. The application allows users to view historical stock data for multiple companies, calculate important financial metrics (such as monthly returns and annual returns), and present the information in both tabular and chart formats. We used modern libraries and techniques such as react-chartjs-2 for interactive charts, Tailwind CSS for responsive styling, and the Alpha Vantage API for fetching real-time stock data.<br/>For the purpose of this project, three demo stocks (MSFT, TSCO.LON, and IBM) are used. This decision was made due to the limitations on non-demo stocks, which are restricted to a maximum of 25 API calls per day. By using demo stocks, the application can function without hitting those restrictions during testing and development<br/><br/>What We Did in This Project <br/>1. Component-based Architecture<br/>We built the application using React's component-based approach to create reusable and maintainable code. The key components developed include:<br/>StockTable Component: Displays historical stock data and calculated returns in a table format. <br/>StockChart Component: Renders an interactive line chart to show stock performance over time using <code>react-chartjs-2</code>. <br/>StockDetail Component: Manages the app's state, handles data loading, and coordinates the table and chart components. <br/>2. Data Fetching and API Integration <br/>We used the Alpha Vantage API to fetch historical stock data. The <code>fetchStockData</code> and <code>fetchFilteredData</code> functions were created to handle the API requests, format the data, and filter it by date range (e.g., 2018–2023). <br/>Implemented caching to minimize repeated API calls and improve performance by storing previously fetched stock data. <br/>3. Stock Data Calculation <br/>We wrote utility functions to process the stock data into a format suitable for display in both tables and charts. <br/> This included: <br/>Monthly Returns Calculation: We calculated the percentage return for each month based on stock prices. <br/>Annual Returns Calculation: By using monthly returns, we computed the compounded annual returns to provide a summary of stock performance over each year. <br/>Average and Standard Deviation: Calculations for average monthly returns and standard deviation of returns were also implemented to provide further insights. <br/>4. Data Visualization <br/>Using react-chartjs-2, we visualized the stock performance over time in a line chart. Different companies are represented by different colors and shapes, and the chart includes custom plugins for additional visual tweaks like padding and point styles. <br/>The table was built using React, and it displays stock performance metrics in a user-friendly format with calculated values for each month and year. <br/>5. Responsive Design with Tailwind CSS <br/>The application is fully responsive, thanks to Tailwind CSS. It adapts seamlessly to different screen sizes, ensuring a consistent user experience on both desktop and mobile devices. <br/>6. User Interaction <br/>Users can select between multiple stock symbols (e.g., MSFT, TSCO-LON, IBM) to view detailed performance data. The data and charts dynamically update when the selected stock changes.<br/>We added error handling and loading states to ensure that the app provides feedback while fetching data or when an error occurs during API requests.<br/><br/><br/>Summary<br/>This project showcases the combination of React.js for front-end development, Chart.js (via <code>react-chartjs-2</code>) for data visualization, Alpha Vantage API for stock data retrieval, and Tailwind CSS for responsive design. The application provides users with a way to analyze and compare historical stock performance with visual charts and tables, using modern web development techniques to ensure interactivity, performance, and ease of use. <br/><br/><br/><br/><br/><br/>Project Structure<br/>project is organized as follows: <br/>src/: Contains all React components, styles, and utility functions. <br/>components/: Contains individual component files for StockTable, StockChart, and StockDetail. <br/>App.js: The main application file that combines components. <br/><br/>Component Breakdown :<br/>1. StockTable Component<code>&lt;br/&gt;import &quot;../App.css&quot;; &lt;br/&gt;import { useState, useMemo } from 'react';&lt;br/&gt;import { useTable } from &quot;react-table&quot;;&lt;br/&gt;&lt;br/&gt;function StockTable(props) {&lt;br/&gt;  return &lt;Table data={props.stockData} /&gt;;&lt;br/&gt;};&lt;br/&gt;</code><br/><br/><br/><br/><code>import &quot;../App.css&quot;</code>; <br/>Purpose: This line imports the CSS file App.css, which contains global styles for the application. <br/>Effect: It applies the CSS rules defined in <code>App.css</code> to all components in the application, including <code>StockTable</code>. This ensures that any custom styles in that file are applied to the component. <br/>Note: The relative path <code>(../)</code> indicates that the CSS file is located one directory level above the current file. <br/>'<br/><code>import { useState, useMemo } from 'react'</code>; <br/>Purpose: This line imports<code>useState</code> and <code>useMemo</code>, two hooks from the core React library that are necessary for handling state and optimizing performance in the component. <br/><code>useState</code>: <br/>A hook that allows us to add state to my function component.<br/>we can use <code>useState</code> to track variables such as user interactions, component data, or other dynamic values. <br/><code>useMemo</code>: <br/>A hook that memoizes values or computations, so they are only recalculated when necessary (i.e., when dependencies change). It is used to optimize performance, especially in expensive operations. <br/>In the <code>StockTable</code> component, <code>useMemo</code> is typically used to memoize the columns configuration or computed data for the table, ensuring that the table re-renders only when necessary, thus improving performance. <br/><code>import { useTable } from &quot;react-table&quot;</code>; <br/>Purpose: This line imports the <code>useTable</code> hook from the <code>react-table</code> library, which is essential for creating tables with customizable columns and rows. <br/><code>useTable</code>: <br/>It is a powerful hook that provides the logic needed to structure and render a table in React. <br/>It handles: <br/>Table headers and rows Sorting, filtering, pagination, etc. <br/>This hook gives us the tools to create tables in a declarative manner with control over each part of the table (rows, headers, cells). <br/><code>function StockTable(props) {</code><br/>Purpose: This is the declaration of the <code>StockTable</code> functional component. It accepts <code>props</code> as an argument, which is a standard way in React to pass data from a parent component to a child component. <br/>Props: The <code>props</code> object contains all the data passed to <code>StockTable</code>, including the <code>stockData</code> that will be displayed in the table. <br/>In the context of this project: The parent component of <code>StockTable</code> will provide the stock market data through <code>props.stockData</code>. <br/><br/><br/><code>return &lt;Table data={props.stockData} /&gt;</code>; <br/>Purpose: This line renders another component called <code>Table</code> and passes the stock data (<code>props.stockData</code>) as a prop to it. <br/>Table Component: The actual implementation of the <code>table</code> is abstracted to another component (<code>Table</code>). <code>StockTable</code> acts as a wrapper or high-level component responsible for passing the necessary data to the <code>Table</code> component. <br/><code>data={props.stockData}</code>: The <code>stockData</code> prop is passed down from <code>StockTable</code> to <code>Table</code>, where it will be used to populate the table rows. <br/><br/><code>const Table = (props) =&gt; {  const columns = useMemo(() =&gt; [    { Header: &quot;Year&quot;, accessor: &quot;year&quot; },    //... other columns&lt;br/&gt;  ], []);</code><br/><br/>Table Function: Defines the main table logic. <br/><code>Columns</code>: Uses <code>useMemo</code> for performance optimization, defining the structure of the table with headers and accessors corresponding to data fields. <br/><br/><code>const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data: props.data });</code><br/>It is a key part of the <code>react-table</code> library, which is widely used in React applications for creating highly customizable tables. Here’s a detailed breakdown of what this line does: <br/><br/><code>useTable</code> Hook Overview <br/><br/><code>useTable</code>: A hook that returns various properties and methods for table management, including props for the <code>table</code> and row preparation. <br/><br/><code>columns</code>: This is the structure of  table. It defines the headers, the data fields they represent, and any other information (like sorting, filtering, etc.). <br/><br/><code>data</code>: This is the array of data objects that will populate my table. Each object represents a row in my table, with keys corresponding to the column accessors. <br/><br/>Destructured Variables from <code>useTable</code><br/>When we call <code>useTable</code>, it returns a number of functions and objects that help in rendering and managing the table. Here's what each of these destructured variables does: <br/><br/><code>getTableProps</code><br/>Purpose: This function returns props that are necessary to apply to the root <code>&lt;table&gt;</code> element for the table to function correctly. <br/><br/>Usage: It typically provides accessibility and other table-specific attributes, such as <code>role=&quot;table&quot;</code>. <br/><br/><br/>Example Usage:  <br/><br/><code>&lt;table {...getTableProps()}&gt;  {/* Table headers and body go here */}&lt;/table&gt;</code><br/><br/><br/><code>getTableBodyProps</code> <br/>Purpose: Similar to <code>getTableProps</code>, but specifically for the <code>&lt;tbody&gt;</code> element. It ensures that any attributes or event handlers required by the <code>tbody</code> are applied. <br/><br/>Example Usage:<br/><br/><code>&lt;&lt;tbody {...getTableBodyProps()}&gt;&lt; {/* Rows go here */}&lt;/tbody&gt;``````headerGroups</code> <br/>Purpose: This array contains all the header groups that my table has. Each <code>headerGroup</code> includes information for rendering the header rows. <br/><br/>Structure: Each <code>headerGroup</code> contains an array of headers that can be mapped to create the <code>&lt;th&gt; </code>elements for each column. <br/><br/>Example Usage:<br/><br/><code>&lt;b{headerGroups.map(headerGroup =&gt; (  &lt;tr {...headerGroup.getHeaderGroupProps()}&gt;    {headerGroup.headers.map(column =&gt; (      &lt;th {...column.getHeaderProps()}&gt;        {column.render('Header')}&lt;br/&gt;     &lt;/th&gt;&lt;br/&gt;    ))}&lt;br/&gt;  &lt;/tr&gt;&lt;br/&gt;))}&lt;br/&gt;&lt;br/&gt;</code><br/><br/><br/>Here, each header group can be rendered in a <code>&lt;tr&gt;</code> tag with multiple <code>&lt;th&gt;</code> tags, one for each column in the header group. <br/><br/><code>rows</code> <br/>Purpose: This is an array containing all the data rows in my table. Each <code>row</code> object represents a single row of my table and includes the necessary information to render each cell. <br/><br/>Usage: The <code>rows</code> array can be mapped over to create the actual table rows (<code>&lt;tr&gt;</code> elements) in my table body. <br/><br/>Example Usage:<br/><br/><code>&lt;br/&gt;{rows.map(row =&gt; {&lt;br/&gt;  prepareRow(row);&lt;br/&gt;  return (&lt;br/&gt;    &lt;tr {...row.getRowProps()}&gt;&lt;br/&gt;      {row.cells.map(cell =&gt; (&lt;br/&gt;        &lt;td {...cell.getCellProps()}&gt;&lt;br/&gt;          {cell.render('Cell')}&lt;br/&gt;        &lt;/td&gt;&lt;br/&gt;      ))}&lt;br/&gt;    &lt;/tr&gt;&lt;br/&gt;  );&lt;br/&gt;})}&lt;br/&gt;</code><br/><code>prepareRow</code> <br/>Purpose: This function is called for each row before rendering it. It applies necessary properties like <code>onClick</code> handlers, accessibility attributes, and styles to each row.<br/>Usage: It must be called for every row before it is rendered in the <code>rows.map()</code> loop. <br/><br/>Hover State Management with <code>useState</code> <br/><br/><code>const [hoveredHeaderGroupIndex, setHoveredHeaderGroupIndex] = useState(null); &lt;br/&gt;const [hoveredRowIndex, setHoveredRowIndex] = useState(null); &lt;br/&gt;const [hoveredColumnIndex, setHoveredColumnIndex] = useState(null); &lt;br/&gt;</code><br/><br/>Purpose: These three <code>useState</code> hooks are used to track which part of the table (header, row, or column) is being hovered over. <br/><code>hoveredHeaderGroupIndex</code>: Tracks which column header is currently being hovered. <br/><code>hoveredRowIndex</code>: Tracks which row is being hovered. <br/><code>hoveredColumnIndex</code>: Tracks which column in the table body is being hovered. <br/>By tracking these states, we can dynamically apply styles (like highlighting the header, row, or column) when the user moves their mouse over specific areas of the table. <br/><br/> JSX Structure of the Table <br/><br/><br/><code>&lt;br/&gt;return (&lt;br/&gt;  &lt;div className=&quot;App relative&quot;&gt;&lt;br/&gt;    &lt;div className=&quot;container table-container&quot;&gt;&lt;br/&gt;      &lt;table {...getTableProps()} className=&quot;custom-table table fixed-table items-center w-full text-black&quot;&gt;&lt;br/&gt;</code><br/><br/><br/>Purpose: This block represents the layout and rendering logic for the table structure in JSX. <br/><code>getTableProps()</code>: This method comes from the <code>useTable</code> hook from the <code>react-table</code> library. It provides all necessary props (like <code>aria-*</code>, <code>role</code>, <code>style</code>, etc.) required to render a table that conforms to accessibility and table standards. <br/>CSS Classes: Custom Tailwind CSS classes (<code>custom-table</code>, <code>fixed-table</code>, etc.) are applied for styling the table and controlling layout, width, text color, etc. <br/><br/><br/><br/>Table Header Rendering <br/><br/><code>&lt;br/&gt;&lt;thead className=&quot;p-3 items-center w-full border-2 border-black rounded-lg head-layout&quot;&gt;&lt;br/&gt;  {headerGroups.map((headerGroup, headerGroupIndex) =&gt; (&lt;br/&gt;    &lt;tr {...headerGroup.getHeaderGroupProps()} className=&quot;p-3 items-center w-1/12 cell-margin rounded-md border-b&quot;&gt;&lt;br/&gt;      {headerGroup.headers.map((column, index) =&gt; (&lt;br/&gt;        &lt;th&lt;br/&gt;          onMouseEnter={() =&gt; setHoveredHeaderGroupIndex(index)}&lt;br/&gt;          onMouseLeave={() =&gt; setHoveredHeaderGroupIndex(null)}&lt;br/&gt;          {...column.getHeaderProps()}&lt;br/&gt;          className={`p-3 text-center text-sm table-container w-1/12 column-${index} &lt;br/&gt;            ${hoveredColumnIndex !== 0 &amp;&amp; hoveredColumnIndex === index ? 'hovered' : ''}&lt;br/&gt;            ${hoveredHeaderGroupIndex !== 0 &amp;&amp; hoveredHeaderGroupIndex === index ? 'hovered' : ''}&lt;br/&gt;            ${index === 0 ? 'first-header-th' : ''}&lt;br/&gt;            ${index === headerGroup.headers.length - 1 ? 'last-header-th' : ''}`}&lt;br/&gt;        &gt;&lt;br/&gt;          {column.render(&quot;Header&quot;)}&lt;br/&gt;        &lt;/th&gt;&lt;br/&gt;      ))}&lt;br/&gt;    &lt;/tr&gt;&lt;br/&gt;  ))}&lt;br/&gt;&lt;/thead&gt;&lt;br/&gt;</code><br/><br/>Purpose: This block handles the rendering of the table header. <br/><br/><code>headerGroups</code>: Comes from <code>useTable</code>, it contains groups of headers (useful in cases where there are multi-level headers). <br/><br/><br/>Hover Events: <br/>When the user hovers over a header (<code>onMouseEnter</code>), the corresponding <code>index</code> is set to <code>hoveredHeaderGroupIndex</code>. <br/>When the user stops hovering (<code>onMouseLeave</code>), the <code>hoveredHeaderGroupIndex</code> is reset to <code>null</code>. <br/>This allows for dynamic highlighting of headers as the user interacts with them. <br/><br/><br/>Dynamic Classes: <br/>The dynamic classes (e.g., <code>${hoveredColumnIndex === index ? 'hovered' : ''}</code>) apply specific styles when a header or column is hovered. <br/>Example: The <code>hovered</code> class is conditionally applied when the current column is being hovered. <br/><br/><br/> Table Body Rendering <br/><br/> <code>&lt;br/&gt; &lt;tbody {...getTableBodyProps()} className=&quot;p-3 cell-margin bg-white&quot;&gt;&lt;br/&gt;  {rows.map((row, rowIndex) =&gt; {&lt;br/&gt;    prepareRow(row);&lt;br/&gt;    return (&lt;br/&gt;      &lt;tr&lt;br/&gt;        {...row.getRowProps()}&lt;br/&gt;        className={`${hoveredRowIndex === rowIndex ? 'hovered-row' : ''}`}&lt;br/&gt;        onMouseEnter={() =&gt; setHoveredRowIndex(rowIndex)}&lt;br/&gt;        onMouseLeave={() =&gt; setHoveredRowIndex(null)}&lt;br/&gt;      &gt;&lt;br/&gt;        {row.cells.map((cell, columnIndex) =&gt; (&lt;br/&gt;          &lt;td&lt;br/&gt;            {...cell.getCellProps()}&lt;br/&gt;            className=&quot;w-1/12 p-[4px]&quot;&lt;br/&gt;            onMouseEnter={() =&gt; setHoveredColumnIndex(columnIndex)}&lt;br/&gt;            onMouseLeave={() =&gt; setHoveredColumnIndex(null)}&lt;br/&gt;          &gt;&lt;br/&gt;            &lt;div className={`${getCellColorClass(cell.value, cell)} padding-cell rounded-lg &lt;br/&gt;              ${columnIndex === 0 &amp;&amp; hoveredRowIndex === rowIndex ? &quot;year-hover&quot; : ''}&lt;br/&gt;              ${hoveredColumnIndex == 0 &amp;&amp; hoveredRowIndex !== rowIndex ? 'hoveredd' : ''}&lt;br/&gt;              ${hoveredHeaderGroupIndex !== null &amp;&amp; hoveredHeaderGroupIndex !== columnIndex ? 'hoveredd' : ''}`}&lt;br/&gt;            &gt;&lt;br/&gt;              {cell.column.Header !== &quot;Year&quot; ? `%${cell.value}` : cell.render(&quot;Cell&quot;)}&lt;br/&gt;            &lt;/div&gt;&lt;br/&gt;          &lt;/td&gt;&lt;br/&gt;        ))}&lt;br/&gt;      &lt;/tr&gt;&lt;br/&gt;    );&lt;br/&gt;  })}&lt;br/&gt;&lt;/tbody&gt;&lt;br/&gt;</code><br/><br/><br/>Purpose: This block renders the body of the table. <br/><br/><code>rows</code>: Represents the rows of data, which are dynamically generated based on the <code>props.data</code> passed to the component. <br/><code>prepareRow(row)</code>: A function from <code>useTable</code> that prepares the row data and ensures that proper props are added for rendering. <br/><br/>Dynamic Hovering: <br/><br/>Just like the table headers, the rows and cells are also interactive. <br/>When the user hovers over a row (<code>onMouseEnter</code>), the <code>hoveredRowIndex</code> state is set, which triggers a CSS class (<code>hovered-row</code>) to style the row. <br/>Similarly, hovering over columns (<code>hoveredColumnIndex</code>) allows individual columns to be highlighted. <br/><code>getCellColorClass</code>: This function is applied to each cell to determine its color class based on the cell's value. It ensures that cells are color-coded based on their data. <br/><br/>Table Footer with Averages and Standard Deviation <br/><br/><br/><code>&lt;br/&gt;&lt;tfoot className=&quot;mt-4 cell-margin p-3&quot;&gt;&lt;br/&gt;  &lt;tr&gt;&lt;br/&gt;    {columns.map((column) =&gt; {&lt;br/&gt;      const averageRow = props.data.find(item =&gt; item.year === &quot;average&quot;);&lt;br/&gt;      const averageValue = averageRow ? averageRow[column.accessor] : &quot;&quot;;&lt;br/&gt;      return (&lt;br/&gt;        &lt;td key={column.accessor} className=&quot;padding-cell p-[4px] rounded-lg&quot;&gt;&lt;br/&gt;          &lt;div className={`${getCellColorClass(averageValue, { column })} padding-cell rounded-lg`}&gt;&lt;br/&gt;            {averageValue !== &quot;average&quot; ? `%${averageValue}` : &quot;average&quot;}&lt;br/&gt;          &lt;/div&gt;&lt;br/&gt;        &lt;/td&gt;&lt;br/&gt;      );&lt;br/&gt;    })}&lt;br/&gt;  &lt;/tr&gt;&lt;br/&gt;  &lt;tr&gt;&lt;br/&gt;    {columns.map((column) =&gt; {&lt;br/&gt;      const standardDeviationRow = props.data.find(item =&gt; item.year === &quot;standard deviation&quot;);&lt;br/&gt;      const standardDeviationValue = standardDeviationRow ? standardDeviationRow[column.accessor] : &quot;&quot;;&lt;br/&gt;      return (&lt;br/&gt;        &lt;td key={column.accessor}&gt;&lt;br/&gt;          &lt;div className={`rounded-lg p-[4px] ${standardDeviationValue !== &quot;standard deviation&quot; ? 'hovereddd' : ''}`}&gt;&lt;br/&gt;            {standardDeviationValue !== &quot;standard deviation&quot; ? `%${standardDeviationValue}` : &quot;standard deviation&quot;}&lt;br/&gt;          &lt;/div&gt;&lt;br/&gt;        &lt;/td&gt;&lt;br/&gt;      );&lt;br/&gt;    })}&lt;br/&gt;  &lt;/tr&gt;&lt;br/&gt;&lt;/tfoot&gt;&lt;br/&gt;</code><br/><br/><br/>Purpose: This block renders the footer, where calculated data such as &quot;average&quot; and &quot;standard deviation&quot; are displayed. <br/>Average and Standard Deviation: These values are derived from <code>props.data</code>. The <code>averageRow</code> and <code>standardDeviationRow</code> are found by looking for rows where <code>year</code> equals &quot;average&quot; or &quot;standard deviation&quot;. <br/>Dynamic Rendering: If a value exists, it is displayed with the format <code>&quot;%${value}&quot;</code>, otherwise it shows either &quot;average&quot; or &quot;standard deviation&quot;. <br/>CSS Classes: Hover effects (<code>hovereddd</code>) are applied similarly to the body and header, allowing for interactive styling. <br/><br/><br/><br/><br/>Explanation of Each Code Block <br/>Table Setup: <br/>The table is structured using <code>getTableProps()</code> to ensure that all table-wide attributes are applied. <br/>Headers: <br/>For each header group, the <code>getHeaderGroupProps()</code> is applied to the <code>&lt;tr&gt;</code>. Inside each <code>&lt;tr&gt;</code>, we iterate over the headers and use <code>getHeaderProps()</code> to ensure each <code>&lt;th&gt;</code> has the right properties. The actual column name is rendered using <code>column.render('Header')</code>. <br/>Rows and Cells: <br/>For each row in the <code>rows</code> array, we first call <code>prepareRow(row)</code> to attach necessary props and behaviors. <br/>Each row renders its cells inside <code>&lt;td&gt;</code> tags, where we apply <code>getCellProps()</code> to ensure each cell has the right attributes, and <code>cell.render('Cell')</code> is used to render the cell’s content. <br/><br/>Summary <br/>This code implements a dynamic, responsive table with the ability to track and visually highlight hovered rows, columns, and headers. <br/>The table is built using <code>react-table</code>, with custom styles applied through Tailwind CSS and additional logic for hover interactions. <br/>Hover states for headers, rows, and columns are managed using <code>useState</code>, and styling is dynamically applied based on these states. <br/>Footer rows are added to display averages and standard deviations, calculated from the table data, and hover effects are also applied here. <br/><br/><br/><br/>StockChart Component <br/>The <code>StockChart</code> component in my project is designed to display a stock chart using the <code>react-chartjs-2</code> library, which leverages <code>Chart.js</code> for creating a variety of charts in a React application. This specific implementation focuses on rendering a line chart for stock data, showing stock symbols and their corresponding annual returns. Below is a detailed breakdown of the code and its functionalities: <br/><br/> Import Statements <br/><br/> <code>&lt;br/&gt; import { Line } from &quot;react-chartjs-2&quot;;&lt;br/&gt;import { Chart, registerables } from 'chart.js';&lt;br/&gt;</code><br/><br/><br/>Purpose: These import statements bring in the necessary libraries and components to create the chart. <br/><code>Line</code>: This is the React wrapper for the <code>Line</code> chart from Chart.js, used to create the line graph. <br/><code>Chart</code> and <code>registerables</code>: These are core components of Chart.js. <code>registerables</code> includes essential elements like scales, legends, and tooltips that need to be registered with Chart.js. <br/><br/><br/>Registering Chart.js Components <br/><br/><code>&lt;br/&gt;Chart.register(...registerables);&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: This line registers all the necessary components from <code>Chart.js</code> to ensure that the line chart can be rendered correctly with features like axes, legends, and tooltips.<br/>Without this registration, Chart.js would not have access to the necessary elements to create and display the chart. <br/><br/><br/>Custom Legend Padding Plugin <br/><br/><code>&lt;br/&gt;const legendPaddingPlugin = {&lt;br/&gt;  id: 'legendPadding',&lt;br/&gt;  beforeInit(chart) {&lt;br/&gt;    const originalFit = chart.legend.fit;&lt;br/&gt;    chart.legend.fit = function () {&lt;br/&gt;      originalFit.call(chart.legend);&lt;br/&gt;      this.height += 50; // Adjust this value for more or less space&lt;br/&gt;    };&lt;br/&gt;  }&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: This custom plugin adjusts the padding around the chart's legend, providing extra space between the legend and the chart. <br/><code>beforeInit(chart)</code>: Hooks into the chart initialization process. <br/>Custom <code>fit()</code>: Overrides the default fitting function for the legend, adding 50 pixels of additional padding to improve the visual layout. <br/><br/><br/>Defining Line Styles with pointStyles <br/><br/><code>&lt;br/&gt;const pointStyles = ['circle', 'rect', 'triangle', 'cross', 'line'];&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: This array defines different shapes (<code>circle</code>, <code>rect</code>, etc.) for the points on each line of the chart. Each dataset (stock) can have a different point shape to distinguish it visually on the chart. <br/><br/><br/>Generating the Chart's Datasets <br/><br/><code>&lt;br/&gt;const datasets = props.stockDataList.map((item, index) =&gt; {&lt;br/&gt;  const isTSCO = item.symbol === &quot;TSCO-LON&quot;;&lt;br/&gt;  const annualReturn = item.annualReturns[0] ? item.annualReturns[0].annualReturn : 0;&lt;br/&gt;&lt;br/&gt;  const dataEntries = Object.entries(item.calcData[0]).slice(1);&lt;br/&gt;  const lastIndex = dataEntries.length - 1;&lt;br/&gt;&lt;br/&gt;  return {&lt;br/&gt;    label: `${item.symbol} : ${annualReturn}%`,&lt;br/&gt;    data: dataEntries,&lt;br/&gt;    fill: false,&lt;br/&gt;    borderColor: getColorByIndex(index),&lt;br/&gt;    tension: 0.1,&lt;br/&gt;    pointRadius: dataEntries.map((_, idx) =&gt; (idx === lastIndex ? 5 : 0)),&lt;br/&gt;    pointStyle: isTSCO &amp;&amp; index === datasets.length - 1 ? 'rect' : pointStyles[index % pointStyles.length],&lt;br/&gt;    backgroundColor: getColorByIndex(index),&lt;br/&gt;    pointHoverRadius: 5,&lt;br/&gt;    showLine: true,&lt;br/&gt;  };&lt;br/&gt;});&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: This block generates the datasets for the chart based on the stock data passed in via <code>props</code>. <br/><code>item.symbol</code>: The stock symbol (e.g., &quot;TSCO-LON&quot;) is displayed in the legend. <br/><code>item.annualReturns[0]</code>: The annual return percentage is displayed next to the stock symbol. <br/><code>dataEntries</code>: Represents the actual data points for the stock's performance. These are sliced to exclude the first entry (typically a label or a year). <br/><code>borderColor</code>: The color of the line for each stock, determined by the <code>getColorByIndex</code> function. <br/><code>pointRadius</code>: Shows the last point on the line with a larger radius (5), while all other points are hidden (<code>0</code>). <br/><code>pointStyle</code>: Uses custom point shapes, with special handling for the &quot;TSCO-LON&quot; stock. <br/><code>showLine</code>: Ensures that lines are drawn even if there are only a few data points. <br/><br/><br/><br/>Rendering the Line Chart <br/><br/><code>&lt;br/&gt;&lt;Line&lt;br/&gt;  data={{ datasets: datasets }}&lt;br/&gt;  options={{&lt;br/&gt;    parsing: { xAxisKey: '[0]', yAxisKey: '[1]' },&lt;br/&gt;    scales: {&lt;br/&gt;      x: { grid: { display: false } },&lt;br/&gt;      y: {&lt;br/&gt;        grid: { display: true, drawBorder: false },&lt;br/&gt;        ticks: { display: true, callback: (value) =&gt; `%${value}`, padding: 10 },&lt;br/&gt;        title: { display: true, text: 'Return', padding: { top: 10 } },&lt;br/&gt;        border: { display: false }&lt;br/&gt;      }&lt;br/&gt;    },&lt;br/&gt;    elements: { line: { borderWidth: 2 } },&lt;br/&gt;    plugins: {&lt;br/&gt;      legend: { position: 'bottom', padding: 50 }&lt;br/&gt;    },&lt;br/&gt;    hover: {&lt;br/&gt;      mode: 'index',&lt;br/&gt;      intersect: false&lt;br/&gt;    }&lt;br/&gt;  }}&lt;br/&gt;  plugins={[legendPaddingPlugin]}&lt;br/&gt;/&gt;&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: This block renders the actual line chart with all the configurations. <br/>Data: The <code>datasets</code> generated in the previous step are passed into the <code>Line</code> component. <br/>Options:<br/><code>scales</code>: Configures the x and y axes: <br/>The x-axis does not display grid lines (<code>display: false</code>). <br/>The y-axis displays grid lines but without a border (<code>drawBorder: false</code>). <br/>Custom Tick Labels: Y-axis values are shown as percentages (<code>callback: (value) =&gt;</code> %${value}). <br/><code>legend</code>: Positioned at the bottom with additional padding. <br/><code>hover</code>: Configures hovering behavior so that hovering over a point highlights all data points for that specific index (x-axis). <br/>Custom Plugin: The <code>legendPaddingPlugin</code> is applied to add padding between the legend and the chart. <br/><br/><br/><br/>Color Utility Function <br/><br/><code>&lt;br/&gt;const getColorByIndex = (index) =&gt; {&lt;br/&gt;  switch (index) {&lt;br/&gt;    case 0: return '#cd6a71';&lt;br/&gt;    case 1: return '#e09b47';&lt;br/&gt;    case 2: return '#05e26b';&lt;br/&gt;    case 3: return '#5c33fe';&lt;br/&gt;    case 4: return '#36cd84';&lt;br/&gt;    default: return '#000'; // Fallback color&lt;br/&gt;  }&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: This function assigns a unique color to each dataset based on its index. It provides visual distinction between multiple lines on the chart. <br/><code>switch (index)</code>: A different color is returned for each dataset (line). If there are more than 5 datasets, it falls back to black (<code>#000</code>). <br/><br/><br/><br/>Summary <br/>The <code>StockChart</code> component is a well-structured React component that dynamically creates and renders a line chart based on stock data passed through <code>props</code>. <br/>The use of <code>react-chartjs-2</code> and <code>Chart.js</code> allows for powerful, customizable charting with features like interactive hover states, custom point styles, and dynamic legends. <br/>The custom <code>legendPaddingPlugin</code> is used to control the padding between the chart and the legend, enhancing the visual layout. <br/>Hover states are configured to highlight corresponding data points across the chart, and the y-axis is formatted to display values as percentages. <br/>The datasets are built dynamically, with each <code>dataset</code> representing a stock's performance, including special handling for the &quot;TSCO-LON&quot; stock. <br/><br/><br/>StockDetail Component <br/><br/>The <code>StockDetail</code> component is the main container that coordinates fetching stock data, performing calculations, and rendering both the stock table and chart components. The following sections break down each part of the code and explain its purpose and functionality. <br/><br/>Import Statements <br/><br/><code>&lt;br/&gt;import &quot;../App.css&quot;;&lt;br/&gt;import { useState, useEffect, useMemo } from 'react';&lt;br/&gt;import StockChart from './StockChart';&lt;br/&gt;import StockTable from './StockTable';&lt;br/&gt;import { fetchFilteredData } from '../repo/DataRepo';&lt;br/&gt;import { calculateStockDataForTable } from '../utils/StockCalc';&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: These import statements pull in the required modules and files. <br/><code>App.css</code>: CSS file for styling the component. <br/><code>useState, useEffect, useMemo</code>: React hooks used to manage state, handle side effects, and optimize calculations. <br/><code>StockChart</code> &amp; <code>StockTable</code>: Child components that display the stock data in different formats (chart and table). <br/><code>fetchFilteredData</code>: A utility function to fetch stock data for a specific time range. <br/><code>calculateStockDataForTable</code>: A utility function to process and format the stock data for display in the table. <br/><br/><br/><br/>State Management <br/><br/><code>&lt;br/&gt;&lt;br/&gt;const allSymbols = [&quot;MSFT&quot;, &quot;TSCO.LON&quot;, &quot;IBM&quot;];&lt;br/&gt;const [selectedSymbol, setSelectedSymbol] = useState(allSymbols[0]);&lt;br/&gt;const [stockData, setStockData] = useState([]);&lt;br/&gt;const [loading, setLoading] = useState(true);&lt;br/&gt;const [error, setError] = useState(null);&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: Manages component state. <br/><code>allSymbols</code>: An array of stock symbols for Microsoft (<code>MSFT</code>), Tesco (<code>TSCO.LON</code>), and IBM (<code>IBM</code>). These are the stocks that will be displayed. <br/><code>selectedSymbol</code>: Tracks the currently selected stock symbol for display. Initially set to the first symbol in <code>allSymbols</code> (Microsoft). <br/><code>stockData</code>: Holds the stock data fetched for all the symbols. <br/><code>loading</code>: Tracks whether data is being fetched (<code>true</code>) or has finished loading (<code>false</code>). <br/><code>error</code>: Holds any errors encountered during data fetching. <br/><br/><br/><br/>Fetching Stock Data <br/><br/><code>&lt;br/&gt;const getDataFromRepo = async (symbol) =&gt; {&lt;br/&gt;  return { symbol: symbol, list: await fetchFilteredData(symbol, 2018, 2023) };&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;const loadData = async () =&gt; {&lt;br/&gt;  setLoading(true);&lt;br/&gt;  const allStocksData = await Promise.all(allSymbols.map((symbol) =&gt; getDataFromRepo(symbol)));&lt;br/&gt;  setLoading(false);&lt;br/&gt;  if (allStocksData.every((item) =&gt; item.list !== null)) {&lt;br/&gt;    setStockData(allStocksData);&lt;br/&gt;  } else {&lt;br/&gt;    setError('Failed to fetch stock data');&lt;br/&gt;  }&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;</code><br/><br/><br/><br/><code>getDataFromRepo(symbol)</code>: Fetches stock data for a specific symbol from the <code>DataRepo</code> module for the years 2018–2023. <br/><br/>Returns an object containing the symbol and its corresponding stock data. <br/><code>loadData()</code>:Initiates the data fetching process by setting <code>loading</code> to <code>true</code>.<br/>Fetches stock data for all symbols using <code>Promise.all()</code>, which allows multiple async operations to run concurrently. <br/>If data fetching is successful (<code>allStocksData.every((item) =&gt; item.list !== null)</code>), the state variable <code>stockData</code> is updated with the fetched data. <br/>If there’s an error, it sets the <code>error</code> state with a failure message. <br/><br/><br/> useEffect Hook <br/><br/> <code>&lt;br/&gt; useEffect(() =&gt; {&lt;br/&gt;  loadData();&lt;br/&gt;}, []);&lt;br/&gt;&lt;br/&gt;</code><br/><br/>Purpose: The <code>useEffect</code> hook ensures that ````loadData()<code>is called once when the component first mounts. This is how the stock data is initially fetched when the user opens the application. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Handling Loading and Error States &lt;br/&gt;&lt;br/&gt;</code><br/>if (loading) return <p>Loading...</p>;<br/>if (error) return &lt;&gt;<br/>  <p>{error}</p><br/>  &lt;button onClick={() =&gt; loadData()}&gt;Reload</button><br/>&lt;/&gt;;<br/><br/><code>&lt;br/&gt;&lt;br/&gt;Loading State: If the </code>loading<code>state is</code>true<code>, a loading message is displayed.&lt;br/&gt;Error State: If there’s an error (</code>error !== null<code>), it displays the error message and provides a button to retry loading the data by calling </code>loadData()<code> again. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Calculating Data for Display &lt;br/&gt;&lt;br/&gt;</code><br/>const calculatedDataList = stockData.map((data) =&gt; {<br/>  const dataForTable = calculateStockDataForTable(data.list);<br/>  return { symbol: data.symbol, calcData: dataForTable.returns, annualReturns: dataForTable.annualReturns };<br/>});<br/><br/><code>&lt;br/&gt;Purpose: This code processes the fetched stock data to calculate the necessary data for both the table and the chart. &lt;br/&gt;</code>calculateStockDataForTable(data.list)<code>: This function processes the stock data to extract the necessary values for displaying returns and annual returns. &lt;br/&gt;The result is an array of objects where each object contains: &lt;br/&gt;</code>symbol<code>: The stock symbol. &lt;br/&gt;</code>calcData<code>: Calculated return data to be displayed in the table. &lt;br/&gt;</code>annualReturns<code>: Annual return percentages for the stock. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Rendering the Component &lt;br/&gt;&lt;br/&gt;</code><br/>return <div className="container mx-auto "><br/>  <div className="flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4"><br/>    {allSymbols.map((item) =&gt; {<br/>      return &lt;button onClick={() =&gt; setSelectedSymbol(item)} className=&quot;open &amp;&amp; 'bg-gray-100'...&quot;&gt;<br/>        {item}<br/>      </button>;<br/>    })}<br/>    <div className="space-y-0.5"><br/>      <div className="flex-1"><br/>        &lt;StockTable stockData={calculatedDataList.find((item) =&gt; item.symbol === selectedSymbol).calcData} /&gt;<br/>      </div><br/>      <div><br/>        <StockChart stockDataList={calculatedDataList} className="flex-1" /><br/>      </div><br/>    </div><br/>  </div><br/></div>;<br/><br/><code>&lt;br/&gt;&lt;br/&gt;Rendering the Buttons: &lt;br/&gt;&lt;br/&gt;</code>allSymbols.map((item) =&gt; &lt;button ...&gt;{item}</button>)<code>: This loop creates a button for each stock symbol. When clicked, it updates the </code>selectedSymbol<code> state to display data for the clicked stock. &lt;br/&gt;&lt;br/&gt;Rendering the Stock Table: &lt;br/&gt;&lt;br/&gt;</code>StockTable stockData={calculatedDataList.find((item) =&gt; item.symbol === selectedSymbol).calcData}<code>: The </code>StockTable<code> component is rendered, passing the calculated table data for the currently selected stock. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Rendering the Stock Chart: &lt;br/&gt;&lt;br/&gt;</code>StockChart stockDataList={calculatedDataList}<code>: The </code>StockChart<code>component is rendered, passing the full list of calculated data for all stocks. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Summary &lt;br/&gt;&lt;br/&gt;The</code>StockDetail<code> component orchestrates the following: &lt;br/&gt;&lt;br/&gt;Fetching stock data for predefined symbols (</code>MSFT<code>, </code>TSCO.LON<code>, and </code>IBM<code>) from a remote source using the </code>fetchFilteredData<code>function. &lt;br/&gt;Handling loading and error states, ensuring that the UI is responsive to the status of data fetching. &lt;br/&gt;Processing the stock data into a format suitable for display in both a table and a chart using the utility function</code>calculateStockDataForTable<code>. &lt;br/&gt;Rendering a dynamic user interface with buttons to switch between stocks, a table to display detailed stock data, and a chart to visualize the stock performance. &lt;br/&gt;&lt;br/&gt;The component makes use of React hooks (</code>useState<code>, </code>useEffect<code>), async functions for data fetching, and conditional rendering to handle different states (loading, error, or displaying data). &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;DataRepo  &lt;br/&gt;Stock Data Fetching and Filtering Functions &lt;br/&gt;&lt;br/&gt;This report covers the implementation of two JavaScript functions, </code>fetchStockData<code>and</code>fetchFilteredData<code>, which are used to fetch stock market data from the Alpha Vantage API and filter it based on a specific time range. The functions also implement basic caching to avoid redundant API calls for the same data. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Alpha Vantage API URL Construction &lt;br/&gt;&lt;br/&gt; </code><br/> const stockUrl = (symbol) =&gt; <code>https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&amp;symbol=${symbol}&amp;apikey=demo</code>;<br/><br/><code>&lt;br/&gt;Purpose: The </code>stockUrl<code> function dynamically constructs the URL to access the Alpha Vantage API, specifically the TIME_SERIES_MONTHLY_ADJUSTED function, which provides historical stock prices on a monthly basis. &lt;br/&gt;</code>symbol<code>: The stock ticker symbol passed to the function, e.g., &quot;MSFT&quot; for Microsoft.&lt;br/&gt;</code>apikey=demo<code>: The API key required to access Alpha Vantage, though this uses a demo key. &lt;br/&gt;&lt;br/&gt;Caching Mechanism &lt;br/&gt;&lt;br/&gt;</code><br/>const cachedData = {};<br/><br/><code>&lt;br/&gt;&lt;br/&gt;Purpose: This object acts as a simple in-memory cache to store previously fetched data. It helps avoid making repeated API calls for the same stock symbol and improves the efficiency of the function. &lt;br/&gt;&lt;br/&gt;Why Caching Matters: &lt;br/&gt;API rate limits: Alpha Vantage, like many APIs, has a rate limit for how frequently we can make requests, especially with a demo key.&lt;br/&gt;Performance: Fetching stock data from an external API can be slow, so caching ensures that data for previously requested stocks is instantly available without waiting for the response. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Fetching Stock Data &lt;br/&gt;</code><br/>const fetchStockData = async (symbol) =&gt; {<br/>  try {<br/>    if (cachedData[symbol]) {<br/>      return cachedData[symbol];<br/>    }<br/>    const response = await fetch(stockUrl(symbol));<br/>    const data = await response.json();<br/>    if (!data[&quot;Monthly Adjusted Time Series&quot;]) { <br/>      throw &quot;data format error&quot;;<br/>    }<br/>    cachedData[symbol] = data;<br/>    return data;<br/>  } catch (err) {<br/>    console.log(err);<br/>  }<br/>  return null;<br/>};<br/><br/><code>&lt;br/&gt;&lt;br/&gt;Explanation: &lt;br/&gt;Input: Takes a stock ticker symbol (e.g., &quot;AAPL&quot; for Apple) as an argument. &lt;br/&gt;Caching Check: &lt;br/&gt;If the requested data for the stock symbol already exists in </code>cachedData<code>, the function immediately returns that cached data. &lt;br/&gt;This reduces redundant API calls and ensures faster responses on subsequent requests for the same stock. &lt;br/&gt;Fetching Data: &lt;br/&gt;If the data is not cached, the function constructs the API URL using </code>stockUrl(symbol)<code>and makes an HTTP request using the</code>fetch<code> API. &lt;br/&gt;The response is parsed as JSON (</code>response.json()<code>), and the function checks if the data contains the &quot;Monthly Adjusted Time Series&quot; key, which holds the stock price data. &lt;br/&gt;Error Handling: &lt;br/&gt;If the data does not contain the expected structure, the function throws an error: </code>&quot;data format error&quot;<code>. &lt;br/&gt;All errors, including potential network issues, are caught in the </code>catch<code> block, and the error is logged to the console. &lt;br/&gt;Return Value: &lt;br/&gt;On success, the fetched stock data is stored in the cache (</code>cachedData[symbol]<code>) and returned. &lt;br/&gt;If an error occurs or if the data is invalid, the function returns </code>null<code>. &lt;br/&gt;&lt;br/&gt;Summary: &lt;br/&gt;Caching improves performance and API usage efficiency. &lt;br/&gt;Error Handling prevents the application from breaking due to unexpected issues, such as network failures or incorrect data formats. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Filtering Stock Data by Year &lt;br/&gt;&lt;br/&gt;</code><br/>const fetchFilteredData = async (symbol, startYear, endYear) =&gt; {<br/>  try {<br/>    const data = await fetchStockData(symbol);<br/>    const dataListed = Object.entries(data[&quot;Monthly Adjusted Time Series&quot;]);<br/>    return dataListed.filter((item) =&gt; {<br/>      const year = new Date(item[0]).getFullYear();<br/>      return year &gt;= startYear &amp;&amp; year &lt;= endYear;<br/>    });<br/>  } catch (err) {<br/>    console.log(err);<br/>  }<br/>  return null;<br/>};<br/><br/><code>&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Explanation: &lt;br/&gt;Input: Takes three arguments: &lt;br/&gt;</code>symbol<code>: The stock ticker symbol for which data is being requested. &lt;br/&gt;</code>startYear<code>: The start of the date range for filtering. &lt;br/&gt;</code>endYear<code>: The end of the date range for filtering. &lt;br/&gt;Fetching Data: &lt;br/&gt;Calls </code>fetchStockData(symbol)<code>to get the stock data for the specified symbol, which may come from the cache or the API. &lt;br/&gt;Converts the &quot;Monthly Adjusted Time Series&quot; data into an array using</code>Object.entries()<code>.  This transforms the data into an array of key-value pairs where: &lt;br/&gt;The key is the date (e.g., &quot;2023-09-30&quot;). &lt;br/&gt;The value is the stock data for that month. &lt;br/&gt;Filtering Data by Year: &lt;br/&gt;</code>filter()<code>: Iterates over the data and filters it based on the year. &lt;br/&gt;</code>new Date(item[0]).getFullYear()<code>: Extracts the year from the date string (</code>item[0]<code>). &lt;br/&gt;The function checks whether the year is between the specified </code>startYear<code>and</code>endYear<code>. &lt;br/&gt;Error Handling: &lt;br/&gt;As in </code>fetchStockData<code>, any errors during data fetching or filtering are caught and logged to the console. &lt;br/&gt;If an error occurs, the function returns </code>null<code>. &lt;br/&gt;&lt;br/&gt;Summary: &lt;br/&gt;The </code>fetchFilteredData<code> function provides a convenient way to request stock data for a specific time range, ensuring that only relevant data is returned. &lt;br/&gt;It combines data fetching, caching, and filtering into a single step, making it easier to work with stock data in different parts of an application. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Exporting the Functions &lt;br/&gt;&lt;br/&gt;</code><br/>export { fetchStockData, fetchFilteredData };<br/><br/><code>&lt;br/&gt;Purpose: Both </code>fetchStockData<code>and</code>fetchFilteredData<code>are exported so that they can be used in other parts of the application. This modular structure allows developers to fetch stock data in different contexts, whether they need the full dataset or just a filtered subset. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Overall Functionality &lt;br/&gt;API Integration: &lt;br/&gt;Both functions integrate with the Alpha Vantage API to fetch stock market data, using a demo API key. &lt;br/&gt;Data Caching: &lt;br/&gt;Caching is implemented to minimize unnecessary API calls, improving the efficiency and speed of the application. &lt;br/&gt;Error Handling: &lt;br/&gt;Both functions include basic error handling mechanisms to log and handle errors gracefully without breaking the application. &lt;br/&gt;Data Filtering: &lt;br/&gt;The</code>fetchFilteredData<code> function allows filtering of stock data by a specific year range, ensuring only the relevant data is processed. &lt;br/&gt;Reusability: &lt;br/&gt;These functions are modular and reusable, making them flexible for different scenarios in stock data analysis applications. They can be used for generating stock performance reports, visualizations, or comparisons. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;StockCalc &lt;br/&gt;&lt;br/&gt;</code>calculateStockDataForTable<code>Function &lt;br/&gt;&lt;br/&gt;Purpose of the Function &lt;br/&gt;The</code>calculateStockDataForTable<code> function is designed to process stock data and compute various metrics that can be displayed in a table, such as: &lt;br/&gt;Monthly Returns: Calculates percentage returns for each month. &lt;br/&gt;Averages: Computes the average return for each month across the years. &lt;br/&gt;Standard Deviation: Calculates the standard deviation of monthly returns across the years. &lt;br/&gt;Annual Returns: Computes the overall annual return for each year based on the monthly returns. &lt;br/&gt;The processed data is then structured in a format suitable for display in a stock table. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Breakdown of the Process &lt;br/&gt; Initializing the Returns Array &lt;br/&gt;&lt;br/&gt;</code><br/>let returns = [];<br/><br/><code>&lt;br/&gt;&lt;br/&gt;Purpose: This array will hold the monthly returns for each year. Each entry in the array represents a year and its corresponding monthly returns. &lt;br/&gt;&lt;br/&gt; Iterating Over the Stock Data &lt;br/&gt;&lt;br/&gt; </code><br/> for (let i = 0; i &lt; data.length; i++) {<br/>  const year = new Date(data[i][0]).getFullYear();<br/>  const month = new Date(data[i][0]).toLocaleString('default', { month: 'long' });<br/>  if (!returns.some((item) =&gt; item.year === year)) {<br/>    returns.push({ year: year });<br/>  }<br/><br/><code>&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Explanation: &lt;br/&gt;The loop iterates through the stock data, which is a list of key-value pairs where each key is a date and the value is the stock information for that month. &lt;br/&gt;The function extracts the year and month from the data. &lt;br/&gt;It checks if the </code>returns<code> array already contains data for the current year. If not, it adds a new object representing that year. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Calculating Monthly Returns &lt;br/&gt;&lt;br/&gt;</code><br/>const returnPercent = ((Number(previousMonth[&quot;5. adjusted close&quot;]) - Number(currentMonth[&quot;5. adjusted close&quot;])) / Number(currentMonth[&quot;5. adjusted close&quot;])) * 100;<br/><br/><code>&lt;br/&gt;Explanation: &lt;br/&gt;The percentage return for each month is calculated as: &lt;br/&gt;&lt;br/&gt;Return = $\frac{(Previous Month’s Close − Current Month’s Close)}{Current Month’s Close} *100$​ &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;The result is stored as the percentage </code>return<code> for the specific month and year in the returns array. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Storing the Last Month's Return &lt;br/&gt;&lt;br/&gt;</code><br/>if (i + 1 &gt;= data.length) {<br/>  const returnPercent = ((Number(currentMonth[&quot;5. adjusted close&quot;]) - Number(currentMonth[&quot;1. open&quot;])) / Number(currentMonth[&quot;1. open&quot;])) * 100;<br/>  returns.find((item) =&gt; item.year === year)[month] = returnPercent.toFixed(2);<br/>}<br/><code>&lt;br/&gt;&lt;br/&gt;Explanation: &lt;br/&gt;When the loop reaches the last month, the function computes the return as the percentage change between the opening price and the adjusted closing price for that month. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Calculating Averages for Each Month &lt;br/&gt;&lt;br/&gt;</code><br/>Calculating Averages for Each Month<br/><br/><code>&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Purpose: This block computes the average monthly return across all years for each month. &lt;br/&gt;Explanation: &lt;br/&gt;For each month, the function adds up the returns across all years. &lt;br/&gt;After summing the returns, it divides by the number of years to get the average. &lt;br/&gt;The result is formatted to two decimal places. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Calculating Standard Deviation for Each Month &lt;br/&gt;&lt;br/&gt;</code><br/>const sd = { year: &quot;standard deviation&quot; };<br/>returns.forEach((item) =&gt; {<br/>  for (const i in item) {<br/>    if (i !== &quot;year&quot;) {<br/>      sd[i] = (sd[i] || 0) + Math.pow(Number(item[i]) - av[i], 2);<br/>    }<br/>  }<br/>});<br/>for (const m in sd) {<br/>  if (m !== &quot;year&quot;) {<br/>    sd[m] = Math.sqrt(sd[m] / (returns.length - 1)).toFixed(2);<br/>  }<br/>}<br/><br/><code>&lt;br/&gt;&lt;br/&gt;Purpose: This block computes the standard deviation of monthly returns across the years. &lt;br/&gt;Explanation: &lt;br/&gt;The standard deviation is calculated by finding the squared difference between each monthly return and the average monthly return, then taking the square root of the average of these squared differences. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Calculating Annual Returns &lt;br/&gt;&lt;br/&gt; </code><br/> const annualReturns = returns.map((item) =&gt; {<br/>  const months = Object.keys(item).filter((key) =&gt; key !== 'year');<br/>  const annualReturn = months.reduce((acc, month) =&gt; {<br/>    const monthValue = parseFloat(item[month]);<br/>    return acc * (1 + monthValue / 100);<br/>  }, 1) - 1;<br/>  return {<br/>    year: item.year,<br/>    annualReturn: (annualReturn * 100).toFixed(2)<br/>  };<br/>});<br/><br/><code>&lt;br/&gt;&lt;br/&gt;Purpose: This block calculates the overall annual return for each year by compounding the monthly returns. &lt;br/&gt;Explanation: &lt;br/&gt;The formula used to calculate the annual return is: &lt;br/&gt;&lt;br/&gt;AnnualReturn = $ \prod_{i=1}^{12} (  1 + \frac{{Monthly Return}_i}{100} )$ - 1 &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;This compound interest-like calculation gives the total annual return based on the monthly percentage changes. &lt;br/&gt;The result is formatted as a percentage and stored in the </code>annualReturns<code> array. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Final Data Structure &lt;br/&gt;&lt;br/&gt;</code><br/>returns.push(av);<br/>returns.push(sd);<br/>return { returns: returns, annualReturns: annualReturns };<br/><br/><code>&lt;br/&gt;&lt;br/&gt;Purpose: After calculating the monthly returns, averages, standard deviations, and annual returns, the function returns an object containing: &lt;br/&gt;</code>returns<code>: An array of yearly data with monthly returns, averages, and standard deviations.&lt;br/&gt;</code>annualReturns```: An array of annual returns for each year. <br/><br/><br/> Summary of Key Outputs <br/>Monthly Returns: The function calculates percentage returns for each month over multiple years.<br/>Averages: It computes the average monthly return for each month across all years.<br/>Standard Deviation: It calculates the standard deviation of the monthly returns for each month.<br/>Annual Returns: It computes the overall return for each year by compounding the monthly returns.</p>
+
+</body>
+</html>
