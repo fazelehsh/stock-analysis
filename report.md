@@ -1,44 +1,56 @@
 
 
-Introduction
+ **Introduction**
 
 In this project, we have developed a Stock Analysis Application using React.js, designed to fetch, process, and visually display stock performance data for selected companies.
 
 The application allows users to view historical stock data for multiple companies, calculate important financial metrics (such as monthly returns and annual returns), and present the information in both tabular and chart formats.
 
-We used modern libraries and techniques such as react-chartjs-2 for interactive charts, Tailwind CSS for responsive styling, and the Alpha Vantage API for fetching real-time stock data
+We used modern libraries and techniques such as :
+
+- react-chartjs-2 for interactive charts, 
+- Tailwind CSS for responsive styling,  
+- the Alpha Vantage API for fetching stock data.
 
 
-For the purpose of this project, three demo stocks (MSFT, TSCO.LON, and IBM) are used.
+For the purpose of this project, three demo stocks (**MSFT**, **TSCO.LON**, and **IBM**) are used.
 
 This decision was made due to the limitations on non-demo stocks, which are restricted to a maximum of 25 API calls per day.
 
-By using demo stocks, the application can function without hitting those restrictions during testing and development
+By using demo stocks, the application can function without hitting those restrictions during testing and development.
 
-What We Did in This Project 
+**What We Did in This Project**
 
-
-Component-based Architecture
+- Component-based Architecture
 We built the application using React's component-based approach to create reusable and maintainable code.
 
-The key components developed include:
-StockTable Component: Displays historical stock data and calculated returns in a table format.
-
-
-StockChart Component: Renders an interactive line chart to show stock performance over time using ```react-chartjs-2```.
-
-
-StockDetail Component: Manages the app's state, handles data loading, and coordinates the table and chart components.
+- The key components developed include:
 
 
 
+1. **StockTable Component**: Displays historical stock data and calculated returns in a table format.
 
-Data Fetching and API Integration 
+
+1. **StockChart Component**: Renders an interactive line chart to show stock performance over time using ```react-chartjs-2```.
+
+
+1. **StockDetail Component**: Manages the app's state, handles data loading, and coordinates the table and chart components.
+
+
+
+
+**Data Fetching and API Integration**: 
 We used the Alpha Vantage API to fetch historical stock data.
 
-The ```fetchStockData``` and ```fetchFilteredData``` functions were created to handle the API requests, format the data, and filter it by date range (e.g., 2018–2023) because the raw data isnt useful for our project. you can see apart of IBM raw data below. 
+The ```fetchStockData``` and ```fetchFilteredData``` functions were created to handle the API requests, format the data, and filter it by date range (e.g., 2018–2023) because the raw data isnt useful for our project. you can see apart of **IBM** raw data below. 
 
 ![IBMRAWDATA](src/image.png/IBMRAWDATA.png)
+
+
+
+
+
+
 
 
 Implemented caching to minimize repeated API calls and improve performance by storing previously fetched stock data.
@@ -46,56 +58,20 @@ Implemented caching to minimize repeated API calls and improve performance by st
 
 
 
-Stock Data Calculation 
+**Stock Data Calculation**: 
 We wrote utility functions to process the stock data into a format suitable for display in both tables and charts.
 
 
  This included: 
-Monthly Returns Calculation: We calculated the percentage return for each month based on stock prices.
+- **Monthly Returns Calculation**:
+ We calculated the percentage return for each month based on stock prices.
 
 
-Annual Returns Calculation: By using monthly returns, we computed the compounded annual returns to provide a summary of stock performance over each year.
+- **Annual Returns Calculation**: 
+By using monthly returns, we computed the compounded annual returns to provide a summary of stock performance over each year.
 
 
-Average and Standard Deviation: Calculations for average monthly returns and standard deviation of returns were also implemented to provide further insights.
-
-
-
-
-Data Visualization 
-Using react-chartjs-2, we visualized the stock performance over time in a line chart.
-
-Different companies are represented by different colors and shapes, and the chart includes custom plugins for additional visual tweaks like padding and point styles.
-
-
-The table was built using React, and it displays stock performance metrics in a user-friendly format with calculated values for each month and year.
-
-
-
-
-Responsive Design with Tailwind CSS 
-The application is fully responsive, thanks to Tailwind CSS.
-
-It adapts seamlessly to different screen sizes, ensuring a consistent user experience on both desktop and mobile devices.
-
-
-
-
-User Interaction 
-Users can select between multiple stock symbols (e.g., MSFT, TSCO-LON, IBM) to view detailed performance data.
-
-The data and charts dynamically update when the selected stock changes
-
-
-We added error handling and loading states to ensure that the app provides feedback while fetching data or when an error occurs during API requests
-
-
-
-
-Summary
-This project showcases the combination of React.js for front-end development, Chart.js (via ```react-chartjs-2```) for data visualization, Alpha Vantage API for stock data retrieval, and Tailwind CSS for responsive design.
-
-The application provides users with a way to analyze and compare historical stock performance with visual charts and tables, using modern web development techniques to ensure interactivity, performance, and ease of use.
+- **Average and Standard Deviation**: Calculations for average monthly returns and standard deviation of returns were also implemented to provide further insights.
 
 
 
@@ -103,33 +79,70 @@ The application provides users with a way to analyze and compare historical stoc
 
 
 
-Project Structure
+**Data Visualization** :
+- Using react-chartjs-2, we visualized the stock performance over time in a line chart.
+
+- Different companies are represented by different colors and shapes, and the chart includes custom plugins for additional visual tweaks like padding and point styles.
+
+
+- The table was built using React, and it displays stock performance metrics in a user-friendly format with calculated values for each month and year.
+
+
+
+
+- Responsive Design with Tailwind CSS 
+The application is fully responsive, thanks to Tailwind CSS. It adapts seamlessly to different screen sizes, ensuring a consistent user experience on both desktop and mobile devices.
+
+
+
+
+**User Interaction**:
+- Users can select between multiple stock symbols (e.g., MSFT, TSCO-LON, IBM) to view detailed performance data.
+
+- The data and charts dynamically update when the selected stock changes
+
+
+- We added error handling and loading states to ensure that the app provides feedback while fetching data or when an error occurs during API requests
+
+
+
+
+>**Summary**
+>>- This project showcases the combination of React.js for front-end development, Chart.js (via ```react-chartjs-2```) for data visualization, Alpha Vantage API for stock data retrieval, and Tailwind CSS for responsive design.<br/>
+>>- The application provides users with a way to analyze and compare historical stock performance with visual charts and tables, using modern web development techniques to ensure interactivity, performance, and ease of use.
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+**Project Structure**
 project is organized as follows: 
-src/: Contains all React components, styles, and utility functions.
+- **src/**:Contains all React components, styles, and utility functions.
 
 
-components/: Contains individual component files for StockTable, StockChart, and StockDetail.
+- **components/**: Contains individual component files for StockTable, StockChart, and StockDetail.
 
 
-App.js: The main application file that combines components.
+- **App.js**: The main application file that combines components.
 
 
 
-Component Breakdown :
+### Component Breakdown :
 
 
-StockTable Component```
+ #### 1. StockTable Component :
+```js
 import "../App.css"; 
 import { useState, useMemo } from 'react';
 import { useTable } from "react-table";
-
-
-
-
-
-
-
-```
 function StockTable(props) {
   return <Table data={props.stockData} />;
 };
@@ -137,46 +150,53 @@ function StockTable(props) {
 
 
 
-```import "../App.css"```; 
-Purpose: This line imports the CSS file App.css, which contains global styles for the application.
+<br/>
 
 
-Effect: It applies the CSS rules defined in ```App.css``` to all components in the application, including ```StockTable```.
+- **```import "../App.css"```;** 
 
-This ensures that any custom styles in that file are applied to the component.
+**Purpose:** This line imports the CSS file App.css, which contains global styles for the application.
+
+
+**Effect**: It applies the CSS rules defined in ```App.css``` to all components in the application, including ```StockTable```.
+
+>This ensures that any custom styles in that file are applied to the component.
 
 
 Note: The relative path ```(../)``` indicates that the CSS file is located one directory level .above the current file.
 
 
 
-```import { useState, useMemo } from 'react'```; 
-Purpose: This line imports```useState``` and ```useMemo```, two hooks from the core React library that are necessary for handling state and optimizing performance in the component.
+- **```import { useState, useMemo } from 'react'```;**
+
+**Purpose:** This line imports```useState``` and ```useMemo```, two hooks from the core React library that are necessary for handling state and optimizing performance in the component.
 
 
-```useState```: 
-A hook that allows us to add state to my function component
+- **```useState```:**
+   
+A hook that allows us to add state to my function component.we can use ```useState``` to track variables such as user interactions, component data, or other dynamic values.
 
 
-we can use ```useState``` to track variables such as user interactions, component data, or other dynamic values.
+- **```useMemo```:** 
+  
+A hook that memoizes values or computations, so they are only recalculated when necessary (i.e., when dependencies change).It is used to optimize performance, especially in expensive operations.
+
+<br/>
+
+>In the ```StockTable``` component, ```useMemo``` is typically used to memoize the columns configuration or computed data for the table, ensuring that the table re-renders only when necessary, thus improving performance.
 
 
-```useMemo```: 
-A hook that memoizes values or computations, so they are only recalculated when necessary (i.e., when dependencies change).
-
-It is used to optimize performance, especially in expensive operations.
+<br/>
 
 
-In the ```StockTable``` component, ```useMemo``` is typically used to memoize the columns configuration or computed data for the table, ensuring that the table re-renders only when necessary, thus improving performance.
+
+- **```import { useTable } from "react-table"```;**
+  
+***Purpose***: This line imports the ```useTable``` hook from the ```react-table``` library, which is essential for creating tables with customizable columns and rows.
 
 
-```import { useTable } from "react-table"```; 
-Purpose: This line imports the ```useTable``` hook from the ```react-table``` library, which is essential for creating tables with customizable columns and rows.
-
-
-```useTable```: 
+**```useTable```**: 
 It is a powerful hook that provides the logic needed to structure and render a table in React.
-
 
 It handles: 
 Table headers and rows Sorting, filtering, pagination, etc.
@@ -185,33 +205,37 @@ Table headers and rows Sorting, filtering, pagination, etc.
 This hook gives us the tools to create tables in a declarative manner with control over each part of the table (rows, headers, cells).
 
 
-```function StockTable(props) {```
-Purpose: This is the declaration of the ```StockTable``` functional component.
+- **```function StockTable(props) {```**
+  
+**Purpose:** This is the declaration of the ```StockTable``` functional component.
 
 It accepts ```props``` as an argument, which is a standard way in React to pass data from a parent component to a child component.
 
 
-Props: The ```props``` object contains all the data passed to ```StockTable```, including the ```stockData``` that will be displayed in the table.
+  **Props:** The ```props``` object contains all the data passed to ```StockTable```, including the ```stockData``` that will be displayed in the table.
 
 
-In the context of this project: The parent component of ```StockTable``` will provide the stock market data through ```props.stockData```.
+>In the context of this project: The parent component of ```StockTable``` will provide the stock market data through ```props.stockData```.
 
 
+<br/>
 
-
-```return <Table data={props.stockData} />```; 
+  - **```return <Table data={props.stockData} />```;**
 Purpose: This line renders another component called ```Table``` and passes the stock data (```props.stockData```) as a prop to it.
 
 
-Table Component: The actual implementation of the ```table``` is abstracted to another component (```Table```).
+<br/>
+
+- **Table**: The actual implementation of the ```table``` is abstracted to another component (```Table```).
+<br/> 
 
 ```StockTable``` acts as a wrapper or high-level component responsible for passing the necessary data to the ```Table``` component.
 
 
-```data={props.stockData}```: The ```stockData``` prop is passed down from ```StockTable``` to ```Table```, where it will be used to populate the table rows.
+**```data={props.stockData}```**: The ```stockData``` prop is passed down from ```StockTable``` to ```Table```, where it will be used to populate the table rows.
 
 
-
+<br/>
 
 
 
@@ -224,83 +248,44 @@ other columns
   
 ```
 
-Table Function: Defines the main table logic.
+**Table Function**: Defines the main table logic.
 
+<br/>
 
-```Columns```: Uses ```useMemo``` for performance optimization, defining the structure of the table with headers and accessors corresponding to data fields.
+**```Columns```**: Uses ```useMemo``` for performance optimization, defining the structure of the table with headers and accessors corresponding to data fields.
 
+<br/>
 
+**```const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data: props.data });```**
 
-```const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data: props.data });```
 It is a key part of the ```react-table``` library, which is widely used in React applications for creating highly customizable tables.
 
-Here’s a detailed breakdown of what this line does: 
-
-```useTable``` Hook Overview 
-
-```useTable```: A hook that returns various properties and methods for table management, including props for the ```table``` and row preparation.
-
-
-
-```columns```: This is the structure of  table.
-
-It defines the headers, the data fields they represent, and any other information (like sorting, filtering, etc.).
-
-
-
-```data```: This is the array of data objects that will populate my table.
-
-Each object represents a row in my table, with keys corresponding to the column accessors.
-
-
-
-Destructured Variables from ```useTable```
+>Here’s a detailed breakdown of what this line does: 
+>>```useTable``` Hook Overview 
+>>```useTable```: A hook that returns various properties and methods for table management, including props for the >> 
+>>```table``` and row preparation.
+>>```columns```: This is the structure of  table.
+>>>It defines the headers, the data fields they represent, and any other information (like sorting, filtering, etc.).
+>>```data```: This is the array of data objects that will populate my table.
+>>Each object represents a row in my table, with keys corresponding to the column accessors.
+>>**Destructured Variables fro```useTable```**
 When we call ```useTable```, it returns a number of functions and objects that help in rendering and managing the table.
-
-Here's what each of these destructured variables does: 
-
-```getTableProps```
+>>>Here's what each of these destructured variables does: 
+>>>>```getTableProps```
 Purpose: This function returns props that are necessary to apply to the root ```<table>``` element for the table to function correctly.
-
-
-
-Usage: It typically provides accessibility and other table-specific attributes, such as ```role="table"```.
-
-
-
-
-Example Usage:  
-
-```<table {...getTableProps()}>  {/* Table headers and body go here */}</table>```
-
-
-```getTableBodyProps``` 
+>>>>Usage: It typically provides accessibility and other table-specific attributes, such as ```role="table"```.
+>>>>Example Usage:  
+>>>>```<table {...getTableProps()}>  {/* Table headers and body go here */}</table>```
+>>>>```getTableBodyProps``` 
 Purpose: Similar to ```getTableProps```, but specifically for the ```<tbody>``` element.
-
-It ensures that any attributes or event handlers required by the ```tbody``` are applied.
-
-
-
-Example Usage:
-
-```<<tbody {...getTableBodyProps()}>< {/* Rows go here */}</tbody>```
-
-
-```headerGroups``` 
-
-
-Purpose: This array contains all the header groups that my table has.
-
-Each ```headerGroup``` includes information for rendering the header rows.
-
-
-
-Structure: Each ```headerGroup``` contains an array of headers that can be mapped to create the ```<th> ```elements for each column.
-
-
-
-Example Usage:
-
+>>>>>It ensures that any attributes or event handlers required by the ```tbody``` are applied.
+>>>>Example Usage:
+>>>>```<<tbody {...getTableBodyProps()}>< {/* Rows go here */}</tbody>```
+>>>>```headerGroups``` 
+>>>>Purpose: This array contains all the header groups that my table has.
+>>>>>Each ```headerGroup``` includes information for rendering the header rows.
+>>>>>Structure: Each ```headerGroup``` contains an array of headers that can be mapped to create the ```<th> ```elements for each column.
+>>>>Example Usage:
 ```
 <{headerGroups.map(headerGroup => (  <tr {...headerGroup.getHeaderGroupProps()}>    {headerGroup.headers.map(column => (      <th {...column.getHeaderProps()}>        {column.render('Header')}
       </th>
@@ -309,25 +294,15 @@ Example Usage:
 ))}
 
 ```
-
-
-Here, each header group can be rendered in a ```<tr>``` tag with multiple ```<th>``` tags, one for each column in the header group.
-
-
-
-```rows``` 
+>>>>>Here, each header group can be rendered in a ```<tr>``` tag with multiple ```<th>``` tags, one for each column in the header group.
+>>```rows``` 
 Purpose: This is an array containing all the data rows in my table.
-
-Each ```row``` object represents a single row of my table and includes the necessary information to render each cell.
-
-
-
-Usage: The ```rows``` array can be mapped over to create the actual table rows (```<tr>``` elements) in my table body.
+>>>Each ```row``` object represents a single row of my table and includes the necessary information to render each cell.
+>>>Usage: The ```rows``` array can be mapped over to create the actual table rows (```<tr>``` elements) in my table body.
 
 
 
-Example Usage:
-
+>>>>Example Usage:
 ```
 {rows.map(row => {
   prepareRow(row);
@@ -342,38 +317,38 @@ Example Usage:
   );
 })}
 ```
-```prepareRow``` 
+>>>```prepareRow``` 
 Purpose: This function is called for each row before rendering it.
-
-It applies necessary properties like ```onClick``` handlers, accessibility attributes, and styles to each row
+>>>>It applies necessary properties like ```onClick``` handlers, accessibility attributes, and styles to each row
 Usage: It must be called for every row before it is rendered in the ```rows.map()``` loop.
 
+<br/>
 
-
-Hover State Management with ```useState``` 
+- **Hover State Management with** ```useState``` 
 
 ```const [hoveredHeaderGroupIndex, setHoveredHeaderGroupIndex] = useState(null); 
 const [hoveredRowIndex, setHoveredRowIndex] = useState(null); 
 const [hoveredColumnIndex, setHoveredColumnIndex] = useState(null); 
 ```
 
-Purpose: These three ```useState``` hooks are used to track which part of the table (header, row, or column) is being hovered over.
+**Purpose**: These three ```useState``` hooks are used to track which part of the table (header, row, or column) is being hovered over.
 
 
-```hoveredHeaderGroupIndex```: Tracks which column header is currently being hovered.
+- **```hoveredHeaderGroupIndex```**: Tracks which column header is currently being hovered.
 
 
-```hoveredRowIndex```: Tracks which row is being hovered.
+- **```hoveredRowIndex```**: Tracks which row is being hovered.
 
 
-```hoveredColumnIndex```: Tracks which column in the table body is being hovered.
+- **```hoveredColumnIndex```**: Tracks which column in the table body is being hovered.
 
 
 By tracking these states, we can dynamically apply styles (like highlighting the header, row, or column) when the user moves their mouse over specific areas of the table.
 
 
 
- JSX Structure of the Table 
+
+ **JSX Structure of the Table**
 
 
 ```
@@ -384,21 +359,20 @@ return (
 ```
 
 
-Purpose: This block represents the layout and rendering logic for the table structure in JSX.
+**Purpose**: This block represents the layout and rendering logic for the table structure in JSX.
 
 
-```getTableProps()```: This method comes from the ```useTable``` hook from the ```react-table``` library.
-
-It provides all necessary props (like ```aria-*```, ```role```, ```style```, etc.) required to render a table that conforms to accessibility and table standards.
-
-
-CSS Classes: Custom Tailwind CSS classes (```custom-table```, ```fixed-table```, etc.) are applied for styling the table and controlling layout, width, text color, etc.
+- **```getTableProps()```**: This method comes from the ```useTable``` hook from the ```react-table``` library.It provides all necessary props (like ```aria-*```, ```role```, ```style```, etc.) required to render a table that conforms to accessibility and table standards.
+  <br/>
 
 
+- **CSS Classes**: Custom Tailwind CSS classes (```custom-table```, ```fixed-table```, etc.) are applied for styling the table and controlling layout, width, text color, etc.
 
 
 
-Table Header Rendering 
+
+
+**Table Header Rendering** 
 
 ```
 <thead className="p-3 items-center w-full border-2 border-black rounded-lg head-layout">
@@ -423,37 +397,34 @@ Table Header Rendering
 </thead>
 ```
 
-Purpose: This block handles the rendering of the table header.
+**Purpose**: This block handles the rendering of the table header.
 
 
 
-```headerGroups```: Comes from ```useTable```, it contains groups of headers (useful in cases where there are multi-level headers).
+- **```headerGroups```**: Comes from ```useTable```, it contains groups of headers (useful in cases where there are multi-level headers).
 
 
 
 
-Hover Events: 
+**Hover Events**: 
 When the user hovers over a header (```onMouseEnter```), the corresponding ```index``` is set to ```hoveredHeaderGroupIndex```.
 
-
+<br/>
 When the user stops hovering (```onMouseLeave```), the ```hoveredHeaderGroupIndex``` is reset to ```null```.
 
-
+<br/>
 This allows for dynamic highlighting of headers as the user interacts with them.
+<br/>
+
+**Dynamic Classes:** 
+The dynamic classes (e.g., ```${hoveredColumnIndex === index ? 'hovered' : ''}```) apply specific styles when a header or column is hovered.<br/>
+
+**Example:** The ```hovered``` class is conditionally applied when the current column is being hovered.
+<br/>
 
 
 
-
-Dynamic Classes: 
-The dynamic classes (e.g., ```${hoveredColumnIndex === index ? 'hovered' : ''}```) apply specific styles when a header or column is hovered.
-
-
-Example: The ```hovered``` class is conditionally applied when the current column is being hovered.
-
-
-
-
- Table Body Rendering 
+ **Table Body Rendering**
 
  ```
  <tbody {...getTableBodyProps()} className="p-3 cell-margin bg-white">
@@ -489,18 +460,18 @@ Example: The ```hovered``` class is conditionally applied when the current colum
 ```
 
 
-Purpose: This block renders the body of the table.
+**Purpose:** This block renders the body of the table.
 
 
 
-```rows```: Represents the rows of data, which are dynamically generated based on the ```props.data``` passed to the component.
+- **```rows```:** Represents the rows of data, which are dynamically generated based on the ```props.data``` passed to the component.
 
 
-```prepareRow(row)```: A function from ```useTable``` that prepares the row data and ensures that proper props are added for rendering.
+- **```prepareRow(row)```:** A function from ```useTable``` that prepares the row data and ensures that proper props are added for rendering.
 
 
 
-Dynamic Hovering: 
+**Dynamic Hovering:**
 
 Just like the table headers, the rows and cells are also interactive.
 
@@ -511,13 +482,13 @@ When the user hovers over a row (```onMouseEnter```), the ```hoveredRowIndex``` 
 Similarly, hovering over columns (```hoveredColumnIndex```) allows individual columns to be highlighted.
 
 
-```getCellColorClass```: This function is applied to each cell to determine its color class based on the cell's value.
+- **```getCellColorClass```:** This function is applied to each cell to determine its color class based on the cell's value.
 
 It ensures that cells are color-coded based on their data.
 
 
 
-Table Footer with Averages and Standard Deviation 
+**Table Footer with Averages and Standard Deviation**
 
 
 ```
@@ -552,69 +523,62 @@ Table Footer with Averages and Standard Deviation
 ```
 
 
-Purpose: This block renders the footer, where calculated data such as "average" and "standard deviation" are displayed.
+**Purpose:** This block renders the footer, where calculated data such as "average" and "standard deviation" are displayed.
 
 
-Average and Standard Deviation: These values are derived from ```props.data```.
+- **Average and Standard Deviation:** These values are derived from ```props.data```.
 
 The ```averageRow``` and ```standardDeviationRow``` are found by looking for rows where ```year``` equals "average" or "standard deviation".
 
 
-Dynamic Rendering: If a value exists, it is displayed with the format ```"%${value}"```, otherwise it shows either "average" or "standard deviation".
+**Dynamic Rendering:** If a value exists, it is displayed with the format ```"%${value}"```, otherwise it shows either "average" or "standard deviation".
 
 
-CSS Classes: Hover effects (```hovereddd```) are applied similarly to the body and header, allowing for interactive styling.
-
-
-
+**CSS Classes:** Hover effects (```hovereddd```) are applied similarly to the body and header, allowing for interactive styling.
 
 
 
-Explanation of Each Code Block 
-Table Setup: 
+
+
+
+**Explanation of Each Code Block 
+Table Setup:**
 The table is structured using ```getTableProps()``` to ensure that all table-wide attributes are applied.
 
 
-Headers: 
-For each header group, the ```getHeaderGroupProps()``` is applied to the ```<tr>```.
+- **Headers:** For each header group, the ```getHeaderGroupProps()``` is applied to the ```<tr>```.
 
-Inside each ```<tr>```, we iterate over the headers and use ```getHeaderProps()``` to ensure each ```<th>``` has the right properties.
+- Inside each ```<tr>```, we iterate over the headers and use ```getHeaderProps()``` to ensure each ```<th>``` has the right properties.
 
-The actual column name is rendered using ```column.render('Header')```.
+- The actual column name is rendered using ```column.render('Header')```.
 
 
-Rows and Cells: 
+- **Rows and Cells:** 
 For each row in the ```rows``` array, we first call ```prepareRow(row)``` to attach necessary props and behaviors.
 
 
-Each row renders its cells inside ```<td>``` tags, where we apply ```getCellProps()``` to ensure each cell has the right attributes, and ```cell.render('Cell')``` is used to render the cell’s content.
+- Each row renders its cells inside ```<td>``` tags, where we apply ```getCellProps()``` to ensure each cell has the right attributes, and ```cell.render('Cell')``` is used to render the cell’s content.
 
 ![table](./src/image.png/table.png)
 
-Summary 
-This code implements a dynamic, responsive table with the ability to track and visually highlight hovered rows, columns, and headers.
+> **Summary** 
+>>- This code implements a dynamic, responsive table with the ability to track and visually highlight hovered rows, columns, and headers.
+>>- The table is built using ```react-table```, with custom styles applied through Tailwind CSS and additional logic for hover interactions.
+>>- Hover states for headers, rows, and columns are managed using ```useState```, and styling is dynamically applied based on these states.
+>>- Footer rows are added to display averages and standard deviations, calculated from the table data, and hover effects are also applied here.
 
-
-The table is built using ```react-table```, with custom styles applied through Tailwind CSS and additional logic for hover interactions.
-
-
-Hover states for headers, rows, and columns are managed using ```useState```, and styling is dynamically applied based on these states.
-
-
-Footer rows are added to display averages and standard deviations, calculated from the table data, and hover effects are also applied here.
+<br/>
 
 
 
-
-
-StockChart Component 
+2. **StockChart Component** 
 The ```StockChart``` component in my project is designed to display a stock chart using the ```react-chartjs-2``` library, which leverages ```Chart.js``` for creating a variety of charts in a React application.
 
 This specific implementation focuses on rendering a line chart for stock data, showing stock symbols and their corresponding annual returns.
 
 Below is a detailed breakdown of the code and its functionalities: 
 
- Import Statements 
+ - **Import Statements** 
 
  ```
  import { Line } from "react-chartjs-2";
@@ -622,33 +586,34 @@ import { Chart, registerables } from 'chart.js';
 ```
 
 
-Purpose: These import statements bring in the necessary libraries and components to create the chart.
+**Purpose:** These import statements bring in the necessary libraries and components to create the chart.
 
 
-```Line```: This is the React wrapper for the ```Line``` chart from Chart.js, used to create the line graph.
+- **```Line```:** This is the React wrapper for the ```Line``` chart from Chart.js, used to create the line graph.
 
 
-```Chart``` and ```registerables```: These are core components of Chart.js.
+- **```Chart``` and ```registerables```**: These are core components of Chart.js.
 
 ```registerables``` includes essential elements like scales, legends, and tooltips that need to be registered with Chart.js.
 
 
 
 
-Registering Chart.js Components 
+- **Registering Chart.js Components** 
 
 ```
 Chart.register(...registerables);
 
 ```
 
-Purpose: This line registers all the necessary components from ```Chart.js``` to ensure that the line chart can be rendered correctly with features like axes, legends, and tooltips
+**Purpose:** This line registers all the necessary components from ```Chart.js``` to ensure that the line chart can be rendered correctly with features like axes, legends, and tooltips.
+
 Without this registration, Chart.js would not have access to the necessary elements to create and display the chart.
 
 
 
 
-Custom Legend Padding Plugin 
+**Custom Legend Padding Plugin**
 
 ```
 const legendPaddingPlugin = {
@@ -665,32 +630,32 @@ const legendPaddingPlugin = {
 
 ```
 
-Purpose: This custom plugin adjusts the padding around the chart's legend, providing extra space between the legend and the chart.
+**Purpose:** This custom plugin adjusts the padding around the chart's legend, providing extra space between the legend and the chart.
 
 
-```beforeInit(chart)```: Hooks into the chart initialization process.
+- **```beforeInit(chart)```:** Hooks into the chart initialization process.
 
 
-Custom ```fit()```: Overrides the default fitting function for the legend, adding 50 pixels of additional padding to improve the visual layout.
+- **Custom ```fit()```:** Overrides the default fitting function for the legend, adding 50 pixels of additional padding to improve the visual layout.
 
 
 
 
-Defining Line Styles with pointStyles 
+**Defining Line Styles with pointStyles** 
 
 ```
 const pointStyles = ['circle', 'rect', 'triangle', 'cross', 'line'];
 
 ```
 
-Purpose: This array defines different shapes (```circle```, ```rect```, etc.) for the points on each line of the chart.
+**Purpose:** This array defines different shapes (```circle```, ```rect```, etc.) for the points on each line of the chart.
 
 Each dataset (stock) can have a different point shape to distinguish it visually on the chart.
 
 
 
 
-Generating the Chart's Datasets 
+**Generating the Chart's Datasets**
 
 ```
 const datasets = props.stockDataList.map((item, index) => {
@@ -716,36 +681,36 @@ const datasets = props.stockDataList.map((item, index) => {
 
 ```
 
-Purpose: This block generates the datasets for the chart based on the stock data passed in via ```props```.
+**Purpose:** This block generates the datasets for the chart based on the stock data passed in via ```props```.
 
 
-```item.symbol```: The stock symbol (e.g., "TSCO-LON") is displayed in the legend.
+- **```item.symbol```:** The stock symbol (e.g., "TSCO-LON") is displayed in the legend.
 
 
-```item.annualReturns[0]```: The annual return percentage is displayed next to the stock symbol.
+- **```item.annualReturns[0]```:** The annual return percentage is displayed next to the stock symbol.
 
 
-```dataEntries```: Represents the actual data points for the stock's performance.
+- **```dataEntries```:** Represents the actual data points for the stock's performance.
 
 These are sliced to exclude the first entry (typically a label or a year).
 
 
-```borderColor```: The color of the line for each stock, determined by the ```getColorByIndex``` function.
+- **```borderColor```:** The color of the line for each stock, determined by the ```getColorByIndex``` function.
 
 
-```pointRadius```: Shows the last point on the line with a larger radius (5), while all other points are hidden (```0```).
+- **```pointRadius```:** Shows the last point on the line with a larger radius (5), while all other points are hidden (```0```).
 
 
-```pointStyle```: Uses custom point shapes, with special handling for the "TSCO-LON" stock.
+- **```pointStyle```:** Uses custom point shapes, with special handling for the "TSCO-LON" stock.
 
 
-```showLine```: Ensures that lines are drawn even if there are only a few data points.
+- **```showLine```:** Ensures that lines are drawn even if there are only a few data points.
 
 
 
 
 
-Rendering the Line Chart 
+**Rendering the Line Chart **
 
 ```
 <Line
@@ -775,13 +740,13 @@ Rendering the Line Chart
 
 ```
 
-Purpose: This block renders the actual line chart with all the configurations.
+**Purpose:** This block renders the actual line chart with all the configurations.
 
 
-Data: The ```datasets``` generated in the previous step are passed into the ```Line``` component.
+- **Data:** The ```datasets``` generated in the previous step are passed into the ```Line``` component.
 
 
-Options:
+- **Options:**
 ```scales```: Configures the x and y axes: 
 The x-axis does not display grid lines (```display: false```).
 
@@ -789,22 +754,22 @@ The x-axis does not display grid lines (```display: false```).
 The y-axis displays grid lines but without a border (```drawBorder: false```).
 
 
-Custom Tick Labels: Y-axis values are shown as percentages (```callback: (value) =>``` %${value}).
+- **Custom Tick Labels:** Y-axis values are shown as percentages (```callback: (value) =>``` %${value}).
 
 
-```legend```: Positioned at the bottom with additional padding.
+- **```legend```:** Positioned at the bottom with additional padding.
 
 
-```hover```: Configures hovering behavior so that hovering over a point highlights all data points for that specific index (x-axis).
+- **```hover```:** Configures hovering behavior so that hovering over a point highlights all data points for that specific index (x-axis).
 
 
-Custom Plugin: The ```legendPaddingPlugin``` is applied to add padding between the legend and the chart.
+- **Custom Plugin:** The ```legendPaddingPlugin``` is applied to add padding between the legend and the chart.
 
 
 
 
 
-Color Utility Function 
+**Color Utility Function**
 
 ```
 const getColorByIndex = (index) => {
@@ -820,12 +785,12 @@ const getColorByIndex = (index) => {
 
 ```
 
-Purpose: This function assigns a unique color to each dataset based on its index.
+**Purpose:** This function assigns a unique color to each dataset based on its index.
 
 It provides visual distinction between multiple lines on the chart.
 
 
-```switch (index)```: A different color is returned for each dataset (line).
+- **```switch (index)```:** A different color is returned for each dataset (line).
 
 If there are more than 5 datasets, it falls back to black (```#000```).
 
@@ -833,20 +798,20 @@ If there are more than 5 datasets, it falls back to black (```#000```).
 ![chart.png](src/image.png/chart.png)
 
 
-Summary 
-The ```StockChart``` component is a well-structured React component that dynamically creates and renders a line chart based on stock data passed through ```props```.
+>Summary 
+>>The ```StockChart``` component is a well-structured React component that dynamically creates and renders a line chart based on stock data passed through ```props```.
 
 
-The use of ```react-chartjs-2``` and ```Chart.js``` allows for powerful, customizable charting with features like interactive hover states, custom point styles, and dynamic legends.
+>>The use of ```react-chartjs-2``` and ```Chart.js``` allows for powerful, customizable charting with features like interactive hover states, custom point styles, and dynamic legends.
 
 
-The custom ```legendPaddingPlugin``` is used to control the padding between the chart and the legend, enhancing the visual layout.
+>>The custom ```legendPaddingPlugin``` is used to control the padding between the chart and the legend, enhancing the visual layout.
 
 
-Hover states are configured to highlight corresponding data points across the chart, and the y-axis is formatted to display values as percentages.
+>>Hover states are configured to highlight corresponding data points across the chart, and the y-axis is formatted to display values as percentages.
 
 
-The datasets are built dynamically, with each ```dataset``` representing a stock's performance, including special handling for the "TSCO-LON" stock.
+>>The datasets are built dynamically, with each ```dataset``` representing a stock's performance, including special handling for the "TSCO-LON" stock.
 
 
 
