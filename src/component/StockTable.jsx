@@ -80,8 +80,8 @@ const Table = (props) => {
   const [hoveredColumnIndex, setHoveredColumnIndex] = useState(null);
   return (
     <div className="App  relative ">
-      <div className="container table-container  ">
-        <table {...getTableProps()} className="custom-table table fixed-table items-center w-full text-black    ">
+      <div className="container table-container overflow-x-auto ">
+        <table {...getTableProps()} className=" min-w-full custom-table   table  fixed-table items-center  text-black    ">
 
           <thead className="p-3 items-center w-full border-2 border-black  rounded-lg head-layout  ">
 
@@ -94,7 +94,7 @@ const Table = (props) => {
                     onMouseEnter={() => setHoveredHeaderGroupIndex(index)}
                     onMouseLeave={() => setHoveredHeaderGroupIndex(null)}
                     {...column.getHeaderProps()}
-                    className={`p-3 text-center text-sm table-container  w-1/12 column-${index} 
+                    className={`p-3 text-center text-sm table-container   sm:text-base w-1/12 column-${index} 
                                ${hoveredColumnIndex !== 0 && hoveredColumnIndex === index ? 'hovered' : ''}
                                ${hoveredHeaderGroupIndex !== 0 && hoveredHeaderGroupIndex === index ? 'hovered' : ''}
                                ${index === 0 ? 'first-header-th' : ''}
@@ -130,7 +130,7 @@ const Table = (props) => {
                   {row.cells.map((cell, columnIndex) => (
                     <td
                       {...cell.getCellProps()}
-                      className="w-1/12 p-[4px]"
+                      className="w-1/12 p-[2px] sm:table-cell"
                       onMouseEnter={() => setHoveredColumnIndex(columnIndex)}
                       onMouseLeave={() => setHoveredColumnIndex(null)}
                     >

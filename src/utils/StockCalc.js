@@ -46,6 +46,7 @@ const calculateStockDataForTable = (data) => {
 
   }
 
+  
 
 
   const sd = { year: "standard deviation" };
