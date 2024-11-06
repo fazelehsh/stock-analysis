@@ -1,0 +1,323 @@
+
+
+
+.StockTable_cellgreen5 {
+  background: var(--Color-Green-Green500, #33A159);
+
+}
+
+.StockTable_cellgreen4 {
+  background: var(--Color-Green-Green400, #66B882);
+
+}
+
+.StockTable_cellgreen3 {
+  background: var(--Color-Green-Green300, #99D0AC);
+
+}
+
+.StockTable_cellgreen2 {
+  background: var(--Color-Green-Green200, #CCE7D5);
+
+}
+
+.StockTable_cellgreen1 {
+  background: var(--Color-Green-Green100, #E5F3EA);
+
+}
+
+
+.StockTable_cellred1 {
+  background: var(--Color-Red-Red100, #FDE8E8);
+
+}
+
+.StockTable_cellred2 {
+  background: var(--Color-Red-Red200, #FAD1D1);
+
+}
+
+.StockTable_cellred3 {
+  background: var(--Color-Red-Red300, #F6A4A4);
+
+}
+
+.StockTable_cellred4 {
+  background: var(--Color-Red-Red500, #EF5F5F);
+
+}
+
+.StockTable_cellwhite {
+  background: white;
+
+}
+
+
+
+
+
+.tableBodyBefore:before {
+  content: "@";
+  display: block;
+  line-height: 10px;
+  text-indent: -99999px;
+}
+
+.tableFooterBefore:before{
+  content: "@";
+  display: block;
+  line-height: 10px;
+  text-indent: -99999px;
+}
+
+.custom-table {
+  border-collapse: collapse;
+  
+}
+
+
+
+.custom-table tbody tr.hovered {
+  background-color: rgba(0, 114, 240, 1)
+}
+
+
+.custom-table thead th.hovered,
+.custom-table tbody tr.hovered td.hovered {
+  background-color: rgba(0, 132, 240, 1);
+
+
+
+}
+.custom-table thead {
+  border: none;
+}
+
+.custom-table thead tr{
+  border: none;
+}
+.custom-taable thead tr th{
+  border: none;
+  background: var(--Color-Surface-surface-secondary, #F4F5F7);
+}
+.firstheaderth{
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 8px;
+}
+.lastheaderth{
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 8px;
+}
+
+.customTable tbody {
+  border-top: 1px solid #e5e7eb ;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+}
+
+
+.custom-table thead th.hovered,
+.custom-table tbody tr.hovered td.hovered {
+  background-color: rgba(0, 132, 240, 1);
+  }
+
+
+.custom-table tfoot {
+  border-top: none;
+  border-bottom: 2px solid #f4f5f7;
+  border-right: 2px solid #f4f5f7;
+  border-left: 2px solid #f4f5f7;
+  
+}
+
+.hovereddd{
+  background-color: #f4f5f7;
+}
+
+.hoveredd {
+  background-color: white;
+  /* Make non-hovered rows white */
+}
+
+
+
+.yearhover {
+  background-color: rgba(0, 114, 240, 1);
+  ;
+
+
+}
+
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+  height: Hug (672px)px;
+  gap: 16px;
+  opacity: 0px;
+  
+
+}
+
+
+
+
+.spacer {
+  margin-bottom: 50px;
+}
+
+.table_container {
+  /*border: 2px solid #f4f5f7;*/
+  /* Black border around the whole table */
+  padding: 10px;
+  /* Optional padding inside the border */
+  border-radius: 6px;
+  /* Optional rounded corners */
+  
+}
+
+
+/*var(--RadiusSystemradius-xs) var(--RadiusSystemradius-xs) var(--RadiusSystemradius-4xs) var(--RadiusSystemradius-4xs)*/
+
+
+
+.head-layout {
+ 
+  height: Fixed (48px)px;
+  
+  gap: 0px;
+  border-radius: var(--RadiusSystemradius-xs) var(--RadiusSystemradius-xs) var(--RadiusSystemradius-4xs) var(--RadiusSystemradius-4xs);
+  opacity: 0px;
+}
+
+
+.separator-line {
+  height: 0px;
+  /* Adjust the height as needed */
+  background-color: #D8DBE1;
+  /* Adjust the color as needed */
+ border: none
+  /* No border */
+ 
+ 
+
+
+
+
+}
+
+
+
+/*.footer-layout {
+  width: Fill (1,256px)px;
+  height: Hug (40px)px;
+
+ 
+}
+*/
+
+
+.sd-row {
+  background-color: #f4f5f7;
+  height: 6px; 
+}
+
+
+
+
+
+
+.customTable tfoot td, .customTable tbody td  {
+  /* Apply the same padding */
+  /* Allow them to follow the same width rules */
+  text-align: center; /* Keep text alignment consistent */
+  box-sizing: border-box; /* Ensure that padding is included in the element's total width/height */
+}
+
+/* Optional: Add consistent width for all columns, including first column */
+
+
+/* For standard deviation cells specific background color */
+.custom-table thead th.hovered {
+  background-color: rgba(0, 132, 240, 1);
+
+
+
+}
+
+.customTable tfoot tr:first-child {
+  border-top:  1px solid #f4f5f7; /* Thin border */
+  padding-top: 5px; /* Adjust as necessary for spacing */
+}
+/* Add space above the first row of tfoot */
+
+
+.customTable thead th:first-child , .customTable tfoot td:first-child, .customTable tbody td:first-child {
+  padding-left: 30px; /* Adjust this value to control the space */
+}
+
+
+
+
+
+
+
+
+.custom-table thead th, .custom-table tfoot td , .custom-table tbody td  {
+  font-size: 12px; 
+  width: 30px; 
+  height :10px;
+}
+
+
+.customTable tfoot td, .customTable tbody td {
+  white-space: nowrap; /* Prevents line breaks */
+}
+
+
+.custom-table thead th {
+  min-width: 50px; /* Minimum width for headers */
+}
+
+
+
+.customTable tfoot td, .customTable tbody td {
+  white-space: nowrap;    /* Prevent line breaks */
+  vertical-align: top;    /* Aligns text to the top of the cell */
+  font-size: 12px;        /* Adjusts text size */
+  padding: 4px;           /* Ensure consistent padding */
+}
+
+
+
+.customTable thead th {
+  white-space: nowrap;        /* Prevents wrapping in header cells */
+  vertical-align: bottom;        /* Aligns text to the top */
+  text-align: center;         /* Centers text horizontally */
+  padding: 5px;               /* Add padding for header cells */
+   /* Optional: gives header a background color */
+}
+
+
+.hoveredMonth {
+  background-color: rgba(0, 114, 240, 1);
+  color: white;
+}
+
+
+.yearHeaderCell {
+  border-radius: 8px;
+  /* Optional: background color for visibility */
+}
+
+
+
+.tableBody {
+  margin-top: 15px; /* Adjust the 10px to the desired space */
+}
+
+
+.padd {
+  padding-bottom: 4px;
+}
