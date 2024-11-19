@@ -66,7 +66,7 @@ const Table: React.FC<TableProps> = (props) => {
 
   return (
     <div className="App relative">
-      <div className={`container ${styles.table_container} overflow-x-auto`}>
+      <div className={`container ${styles.tablecontainer} overflow-x-auto`}>
         <table {...getTableProps()} className={`min-w-full table items-center text-black ${styles.customTable}`}>
           <thead className={`${styles.headLayout}  items-center w-full  rounded-lg`}>
             {headerGroups.map((headerGroup, headerGroupIndex) => (

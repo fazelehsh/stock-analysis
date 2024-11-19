@@ -1,3 +1,6 @@
+
+
+
 import React from 'react';
 import StockDetail from '../components/StockDetail';
 import { stockUrl } from '../utils/stockUrl';

@@ -167,7 +167,7 @@
   margin-bottom: 50px;
 }
 
-.table_container {
+.tablecontainer {
   /*border: 2px solid #f4f5f7;*/
   /* Black border around the whole table */
   padding: 10px;
@@ -320,4 +320,15 @@
 
 .padd {
   padding-bottom: 4px;
+}
+
+
+
+
+.selected {
+  background-color:  bg-gray-100;
+}
+
+.not-selected {
+  background-color:  bg-transparent;
 }
